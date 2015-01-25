@@ -90,10 +90,10 @@
                         <div class="modal-body">
                             <form class="form-signin" id="loginForm">
                                 <h2 class="form-signin-heading" id="loginFormTitle">Please login</h2>
-                                <label for="inputEmail" class="sr-only">Email</label>
-                                <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus />
-                                <label for="inputUserPass" class="sr-only">Password</label>
-                                <input type="password" id="inputUserPass" class="form-control" placeholder="Password" required />
+                                <label for="inputLoginEmail" class="sr-only">Email</label>
+                                <input type="email" id="inputLoginEmail" class="form-control" placeholder="Email" required autofocus />
+                                <label for="inputLoginUserPass" class="sr-only">Password</label>
+                                <input type="password" id="inputLoginUserPass" class="form-control" placeholder="Password" required />
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -115,14 +115,14 @@
                             <h4 class="modal-title" id="registerModalLabel">Register</h4>
                         </div>
                         <div class="modal-body">
-                            <form class="form-signin" id="loginRegisterForm">
-                                <h2 class="form-signin-heading" id="loginRegisterFormTitle">Please register</h2>
-                                <label for="inputEmail" class="sr-only">Email</label>
-                                <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus />
-                                <label for="inputUserPass" class="sr-only">Password</label>
-                                <input type="password" id="inputUserPass" class="form-control" placeholder="Password" required />
-                                <label for="inputUserPassRepeat" class="sr-only">Repeat Password</label>
-                                <input type="password" id="inputUserPassRepeat" class="form-control" placeholder="Repeat Password" required />
+                            <form class="form-signin" id="registerForm">
+                                <h2 class="form-signin-heading" id="registerFormTitle">Please register</h2>
+                                <label for="inputRegisterEmail" class="sr-only">Email</label>
+                                <input type="email" id="inputRegisterEmail" class="form-control" placeholder="Email" required autofocus />
+                                <label for="inputRegisterUserPass" class="sr-only">Password</label>
+                                <input type="password" id="inputRegisterUserPass" class="form-control" placeholder="Password" required />
+                                <label for="inputRegisterUserPassRepeat" class="sr-only">Repeat Password</label>
+                                <input type="password" id="inputRegisterUserPassRepeat" class="form-control" placeholder="Repeat Password" required />
                             </form>
                         </div>
                         <div class="modal-footer">
