@@ -1,7 +1,7 @@
 <?php
    
    // Determine site content root
-   define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+   define('__ROOT__', dirname(dirname(__FILE__)));
    
    $configExists = file_exists( __ROOT__ . "/config.php" );
    

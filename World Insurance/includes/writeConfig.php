@@ -1,7 +1,7 @@
 <?php
    
    // Determine site content root
-   define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+   define('__ROOT__', dirname(dirname(__FILE__)));
    
    $newDatabaseName     = $_POST[ 'databaseName' ];
 	$newDatabaseUserName = $_POST[ 'databaseUserName' ];

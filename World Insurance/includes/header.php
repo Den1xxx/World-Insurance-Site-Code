@@ -1,5 +1,8 @@
 <?php
 
+    // Determine site content root
+    define('__ROOT__', dirname(__FILE__));
+    
    $currentPage = $_SERVER['REQUEST_URI'];
    $out = "";
    
