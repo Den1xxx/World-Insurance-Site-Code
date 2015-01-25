@@ -10,7 +10,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>World Insurance Home Page</title>
+        <title>World Insurance Setup Page</title>
 
         <!-- Bootstrap CSS 3.3.2 -->
         <link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -31,18 +31,16 @@
         <![endif]-->
 
         <?php
-      
+        
             // Determine site content root
             define('__ROOT__', dirname(__FILE__));
-      
+        
         ?>
     </head>
     <body>
         <?php
-                require_once(__ROOT__ . "/includes/header.php");
-        ?>
         
-        <?php
+          require_once( __ROOT__ . "/includes/header.php" );
       
           $configExists = file_exists( __ROOT__ . "/config.php" );
 
@@ -50,7 +48,9 @@
           
             require_once(__ROOT__ . "/config.php");
             require_once(__ROOT__ . "/includes/database.php");
-
+            
+            $dbObject = new Database;
+            $db = $dbObject->createDatabaseConnection();
 
           }
       
@@ -81,7 +81,7 @@
             </div> <!-- /container -->";
 
           }
-          else if() {
+          else if( !$db->connect_errno ) {
             
             $out .= "<form class=\"form-signin\" id=\"loginRegisterForm\">
                                 <h2 class=\"form-signin-heading\" id=\"loginRegisterFormTitle\">Please register</h2>
