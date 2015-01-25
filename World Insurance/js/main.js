@@ -11,10 +11,10 @@
 $(document).ready(function() {
    
    // Variable to hold current request
-   var request;
+    var request;
    
    // Bind to the submit event of our form
-   $("#writeDatabaseConfigurationForm").submit(function(event) {
+    $("#writeDatabaseConfigurationForm").submit(function (event) {
       
       // Abort any pending request
       if (request) {
@@ -40,7 +40,7 @@ $(document).ready(function() {
       // Fire off the POST request to writeConfig.php
       request = $.ajax( {
          
-         url: "includes/formGPs/writeConfig.php",
+         url: "includes/writeConfig.php",
          type: "POST",
          data: serializedData
          
@@ -52,7 +52,7 @@ $(document).ready(function() {
          // Fire off a POST request to createTable.php
          var createTableRequest = $.ajax( {
             
-            url: "includes/formGPs/createTable.php",
+            url: "includes/createTable.php",
             type: "POST"
             
          } );

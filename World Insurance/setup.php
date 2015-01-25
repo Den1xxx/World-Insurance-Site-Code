@@ -75,7 +75,7 @@
                 <input type=\"password\" id=\"inputDatabaseUserPass\" class=\"form-control\" placeholder=\"Database User Password\">
                 <label for=\"inputDatabaseHostname\" class=\"sr-only\">Database Hostname</label>
                 <input type=\"text\" id=\"inputDatabaseHostname\" class=\"form-control\" placeholder=\"Database Hostname\" required>
-                <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Submit</button>
+                <button id=\"databaseSubmitButton\" class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Submit</button>
                 </form>
 
             </div> <!-- /container -->";
