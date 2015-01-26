@@ -32,7 +32,6 @@
    
    $SQLQuery = "CREATE TABLE `CM_Customers` (
       `customerRecordID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-      `isAdmin` BOOLEAN NOT NULL,
       `accountNumber` int(9) unsigned NOT NULL,
       `customerFirstName` varchar(100) CHARACTER SET utf8 NOT NULL,
       `customerLastName` varchar(100) CHARACTER SET utf8 NOT NULL,
@@ -41,6 +40,24 @@
       `customerPolicyPDFs` longtext CHARACTER SET utf8 NOT NULL,
       PRIMARY KEY (`customerRecordID`),
       UNIQUE KEY `accountNumber` (`accountNumber`)
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+   
+   if ( $db->query($SQLQuery) === FALSE ) {
+       
+       error_log( "Error creating table: " . $db->error );
+       return FALSE;
+       
+   }
+   
+   $SQLQuery = "CREATE TABLE `CM_Users` (
+      `userRecordID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+      `isAdmin` BOOLEAN NOT NULL,
+      `userFirstName` varchar(100) CHARACTER SET utf8 NOT NULL,
+      `userLastName` varchar(100) CHARACTER SET utf8 NOT NULL,
+      `userEmail` varchar(100) CHARACTER SET utf8 NOT NULL,
+      `userPassword` mediumtext CHARACTER SET utf8 NOT NULL,
+      PRIMARY KEY (`userRecordID`),
+      UNIQUE KEY `userEmail` (`userEmail`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
    
    if ( $db->query($SQLQuery) === FALSE ) {

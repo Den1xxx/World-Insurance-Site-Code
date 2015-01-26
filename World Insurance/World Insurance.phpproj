@@ -18,7 +18,8 @@
   <ItemGroup>
     <Compile Include="admin.php" />
     <Compile Include="config.php" />
-    <Compile Include="config1.php" />
+    <Compile Include="includes\addUser.php" />
+    <Compile Include="includes\createHash.php" />
     <Compile Include="includes\createTable.php" />
     <Compile Include="includes\database.php" />
     <Compile Include="includes\header.php" />
@@ -53,5 +54,6 @@
     <Content Include="js\npm.js" />
     <Content Include="js\oldFunctions.js" />
     <Content Include="js\respond.min.js" />
+    <Content Include="RadioSwitchCode-NotNeeded.txt" />
   </ItemGroup>
 </Project>
