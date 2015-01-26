@@ -47,7 +47,7 @@ $(document).ready(function() {
       } );
       
       // Callback handler that will be called on success
-      request.done(function (response, textStatus, jqXHR) {
+      request.done(function (response, textStatus, jqXhr) {
          
          // Fire off a POST request to createTable.php
          var createTableRequest = $.ajax( {
@@ -57,7 +57,7 @@ $(document).ready(function() {
             
          } );
          
-         createTableRequest.done(function(response, textStatus, jqXHR) {
+         createTableRequest.done(function(response, textStatus, jqXhr) {
             
             $('#WriteDatabaseConfigurationForm').trigger("reset"); // Resets form1 to its default state
             $('div#returnOutput').text( "The database configuration was written successfully! This page will refresh in 5 seconds." );
@@ -65,7 +65,7 @@ $(document).ready(function() {
             
          });
          
-         createTableRequest.fail(function(jqXHR, textStatus, errorThrown) {
+         createTableRequest.fail(function(jqXhr, textStatus, errorThrown) {
             
             // Log the error to the console
             console.error(
@@ -78,7 +78,7 @@ $(document).ready(function() {
 	    } );
       
       // Callback handler that will be called on failure
-      request.fail(function (jqXHR, textStatus, errorThrown) {
+      request.fail(function (jqXhr, textStatus, errorThrown) {
          
          // Log the error to the console
          console.error(

@@ -17,6 +17,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="admin.php" />
+    <Compile Include="config.php" />
     <Compile Include="config1.php" />
     <Compile Include="includes\createTable.php" />
     <Compile Include="includes\database.php" />

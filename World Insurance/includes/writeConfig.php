@@ -1,12 +1,12 @@
 <?php
    
-   // Determine site content root
-   define('__ROOT__', dirname(dirname(__FILE__)));
+    // Determine site content root
+    define('__ROOT__', dirname(dirname(__FILE__)));
    
-   $newDatabaseName     = $_POST[ 'databaseName' ];
-	$newDatabaseUserName = $_POST[ 'databaseUserName' ];
-	$newDatabaseUserPass = $_POST[ 'databaseUserPass' ];
-	$newDatabaseHostname = $_POST[ 'databaseHostname' ];
+    $newDatabaseName     = $_POST[ 'inputDatabaseName' ];
+	$newDatabaseUserName = $_POST[ 'inputDatabaseUserName' ];
+	$newDatabaseUserPass = $_POST[ 'inputDatabaseUserPass' ];
+	$newDatabaseHostname = $_POST[ 'inputDatabaseHostname' ];
    
    $configDatabaseName     = "'" . "$newDatabaseName" . "'";
    $configDatabaseUserName = "'" . "$newDatabaseUserName" . "'";

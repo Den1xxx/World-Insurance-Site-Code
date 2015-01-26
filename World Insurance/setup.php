@@ -68,13 +68,13 @@
                 <form class=\"form-signin\" id=\"writeDatabaseConfigurationForm\">
                 <h2 class=\"form-signin-heading\">Site Database Configuration Wizard</h2>
                 <label for=\"inputDatabaseName\" class=\"sr-only\">Database Name</label>
-                <input type=\"text\" id=\"inputDatabaseName\" class=\"form-control\" placeholder=\"Database Name\" required autofocus>
+                <input type=\"text\" id=\"inputDatabaseName\" name=\"inputDatabaseName\" class=\"form-control\" placeholder=\"Database Name\" required autofocus>
                 <label for=\"inputDatabaseUserName\" class=\"sr-only\">Database User Name</label>
-                <input type=\"text\" id=\"inputDatabaseUserName\" class=\"form-control\" placeholder=\"Database User Name\" required>
+                <input type=\"text\" id=\"inputDatabaseUserName\" name=\"inputDatabaseUserName\" class=\"form-control\" placeholder=\"Database User Name\" required>
                 <label for=\"inputDatabaseUserPass\" class=\"sr-only\">Database User Password</label>
-                <input type=\"password\" id=\"inputDatabaseUserPass\" class=\"form-control\" placeholder=\"Database User Password\">
+                <input type=\"password\" id=\"inputDatabaseUserPass\" name=\"inputDatabaseUserPass\" class=\"form-control\" placeholder=\"Database User Password\">
                 <label for=\"inputDatabaseHostname\" class=\"sr-only\">Database Hostname</label>
-                <input type=\"text\" id=\"inputDatabaseHostname\" class=\"form-control\" placeholder=\"Database Hostname\" required>
+                <input type=\"text\" id=\"inputDatabaseHostname\" name=\"inputDatabaseHostname\" class=\"form-control\" placeholder=\"Database Hostname\" required>
                 <button id=\"databaseSubmitButton\" class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Submit</button>
                 </form>
 
