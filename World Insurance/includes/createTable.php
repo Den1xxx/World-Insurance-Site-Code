@@ -52,10 +52,9 @@
    $SQLQuery = "CREATE TABLE `CM_Users` (
       `userRecordID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
       `isAdmin` BOOLEAN NOT NULL,
-      `userFirstName` varchar(100) CHARACTER SET utf8 NOT NULL,
-      `userLastName` varchar(100) CHARACTER SET utf8 NOT NULL,
       `userEmail` varchar(100) CHARACTER SET utf8 NOT NULL,
       `userPassword` mediumtext CHARACTER SET utf8 NOT NULL,
+      `accountNumber` int(9) unsigned NOT NULL,
       PRIMARY KEY (`userRecordID`),
       UNIQUE KEY `userEmail` (`userEmail`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";

@@ -121,6 +121,8 @@ $(document).ready(function() {
         // Serialize the data in the form
         var serializedData = $form.serialize();
 
+        serializedData += "&inputUserAccountNumber=000000000&inputIsAdmin=1";
+
         // Let's disable the inputs for the duration of the Ajax request.
         // Note: we disable elements AFTER the form data has been serialized.
         // Disabled form elements will not be serialized.
@@ -138,7 +140,7 @@ $(document).ready(function() {
         // Callback handler that will be called on success
         request.done(function (response, textStatus, jqXhr) {
 
-            // Stuff for done
+            // Do Nothing
 
         });
 
@@ -166,5 +168,36 @@ $(document).ready(function() {
         event.preventDefault();
 
     });
+
+    var password = document.querySelector(" input[name=inputAdminUserPass]");
+    var passwordConfirm = document.querySelector(" input[name=inputAdminUserRepeat]");
+    if (password && passwordConfirm) {
+        [].forEach.call([password, passwordConfirm], function (el) {
+            el.addEventListener("input", function () {
+                if (el.validity.patternMismatch === false) {
+                    if (password.value === passwordConfirm.value) {
+                        try {
+                            password.setCustomValidity("");
+                            passwordConfirm.setCustomValidity("");
+
+                        }
+                        catch (e) { }
+                    }
+                    else {
+                        password.setCustomValidity("The two passwords do not match");
+                    }
+                }
+                if ((password.checkValidity() && passwordConfirm.checkValidity()) === false) {
+                    password.setCustomValidity("The two passwords do not match, and they don't comply with the password rules.");
+                    passwordConfirm.setCustomValidity("The two passwords do not match, and they don't comply with the password rules.");
+                }
+                else {
+                    password.setCustomValidity("");
+                    passwordConfirm.setCustomValidity("");
+
+                }
+            }, false);
+        });
+    }
 
 });

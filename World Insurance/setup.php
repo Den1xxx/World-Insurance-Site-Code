@@ -53,6 +53,37 @@
             $db = $dbObject->createDatabaseConnection();
 
           }
+          
+          $url = __ROOT__ . "/includes/findUser.php";
+          $searchFields = array(
+                      'rootAdminRecordID'=>urlencode('1')
+                  );
+
+          //url-ify the data for the POST
+          foreach($searchFields as $key=>$value) { $searchFieldsString .= $key.'='.$value.'&'; }
+          rtrim($searchFieldsString,'&');
+
+          //open connection
+          $con = curl_init();
+
+          //set the url, number of POST vars, POST data
+          curl_setopt($con, CURLOPT_URL, $url);
+          curl_setopt($con, CURLOPT_POST, count($searchFields));
+          curl_setopt($con, CURLOPT_POSTFIELDS, $searchFieldsString);
+
+          //execute post
+          $result = curl_exec($con);
+          
+          if ($result != FALSE) {
+          
+              $rootAdminExists = TRUE;
+          
+          }
+          else {
+          
+              $rootAdminExists = FALSE;
+          
+          }
       
           // Initialize the variable that will hold all the HTML output
           $out = "<!-- Begin page content --><br /><br />
@@ -81,16 +112,17 @@
             </div> <!-- /container -->";
 
           }
-          else if( !$db->connect_errno ) {
+          else if( !$db->connect_errno && !$rootAdminExists) {
             
             $out .= "<form class=\"form-signin\" id=\"adminCreationForm\">
                         <h2 class=\"form-signin-heading\" id=\"adminCreationFormTitle\">Please create the admin account</h2>
-                        <label for=\"inputAdminEmail\" class=\"sr-only\">Email</label>
-                        <input type=\"email\" id=\"inputAdminEmail\" name=\"inputAdminEmail\" class=\"form-control\" placeholder=\"Email\" required autofocus />
-                        <label for=\"inputAdminUserPass\" class=\"sr-only\">Password</label>
-                        <input type=\"password\" id=\"inputAdminUserPass\" name=\"inputAdminUserPass\" class=\"form-control\" placeholder=\"Password\" required />
-                        <label for=\"inputAdminUserPassRepeat\" class=\"sr-only\">Repeat Password</label>
-                        <input type=\"password\" id=\"inputAdminUserPassRepeat\" name=\"inputAdminUserPassRepeat\" class=\"form-control\" placeholder=\"Repeat Password\" required />
+                        <label for=\"inputUserEmail\" class=\"sr-only\">Email</label>
+                        <input type=\"email\" id=\"inputUserEmail\" name=\"inputUserEmail\" class=\"form-control\" placeholder=\"Email\" required autofocus />
+                        <label for=\"inputUserPass\" class=\"sr-only\">Password</label>
+                        <input type=\"password\" id=\"inputUserPass\" name=\"inputUserPass\" class=\"form-control\" placeholder=\"Password\" required />
+                        <label for=\"inputUserPassRepeat\" class=\"sr-only\">Repeat Password</label>
+                        <input type=\"password\" id=\"inputUserPassRepeat\" name=\"inputUserPassRepeat\" class=\"form-control\" placeholder=\"Repeat Password\" required />
+                        <button id=\"adminSubmitButton\" class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Submit</button>
                     </form>";
           
           }
