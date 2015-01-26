@@ -32,6 +32,7 @@
    
    $SQLQuery = "CREATE TABLE `CM_Customers` (
       `customerRecordID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+      `isAdmin` BOOLEAN NOT NULL,
       `accountNumber` int(9) unsigned NOT NULL,
       `customerFirstName` varchar(100) CHARACTER SET utf8 NOT NULL,
       `customerLastName` varchar(100) CHARACTER SET utf8 NOT NULL,
