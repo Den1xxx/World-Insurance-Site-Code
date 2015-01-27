@@ -18,27 +18,28 @@
         
     }
     
-    $findUserRecordID        = $_POST[ 'inputUserRecordID' ];
-    $findUserEmail           = $_POST[ 'inputUserEmail' ];
-	$findUserPass            = $_POST[ 'inputUserPass' ];
-    $findUserAccountNumber   = $_POST[ 'inputUserAccountNumber' ];
+    $findUserRecordID        = $_GET[ 'inputUserRecordID' ];
+    $findUserEmail           = $_GET[ 'inputUserEmail' ];
+	$findUserPass            = $_GET[ 'inputUserPass' ];
+    $findUserAccountNumber   = $_GET[ 'inputUserAccountNumber' ];
     
     $preppedFindUserRecordID         = $db->real_escape_string($findUserRecordID);
     $preppedFindUserEmail            = $db->real_escape_string($findUserEmail);
     $preppedFindUserPass             = $db->real_escape_string($findUserPass);
     $preppedFindUserAccountNumber    = $db->real_escape_string($findUserAccountNumber);
     
-    $SQLQuery = "SELECT * FROM CM_Users WHERE userRecordID = '$preppedFindUserRecordID';";
+    $SQLQuery = "SELECT * FROM `cm`.`CM_Users` WHERE userRecordID = $preppedFindUserRecordID;";
     
     if ( $result = $db->query($SQLQuery) === FALSE ) {
         
         error_log( "Error finding record: " . $db->error );
-        return FALSE;
+        return "Ended badly";
         
     }
 
     $db->close();
     
-    return $result;
+    //return $result;
+    return "ended well";
 
 ?>

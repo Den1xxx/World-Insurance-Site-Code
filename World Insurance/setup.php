@@ -43,6 +43,7 @@
           require_once( __ROOT__ . "/includes/header.php" );
       
           $configExists = file_exists( __ROOT__ . "/config.php" );
+          $rootAdminExists = FALSE;
 
           if ( $configExists ) {
           
@@ -51,39 +52,17 @@
             
             $dbObject = new Database;
             $db = $dbObject->createDatabaseConnection();
+            
+            $SQLQuery = "SELECT * FROM `cm`.`CM_Users` WHERE userRecordID = 1;";
+            
+            $result = $db->query($SQLQuery) === FALSE );
+            
+            if ($response != FALSE) {
+                
+                $rootAdminExists = TRUE;
+                
+            }
 
-          }
-          
-          $url = __ROOT__ . "/includes/findUser.php";
-          $searchFieldsString = "";
-          $searchFields = array(
-                      'inputUserRecordID'=>urlencode('1')
-                  );
-
-          //url-ify the data for the POST
-          foreach($searchFields as $key=>$value) { $searchFieldsString .= $key.'='.$value.'&'; }
-          rtrim($searchFieldsString,'&');
-
-          //open connection
-          $con = curl_init();
-
-          //set the url, number of POST vars, POST data
-          curl_setopt($con, CURLOPT_URL, $url);
-          curl_setopt($con, CURLOPT_POST, count($searchFields));
-          curl_setopt($con, CURLOPT_POSTFIELDS, $searchFieldsString);
-
-          //execute post
-          $result = curl_exec($con);
-          
-          if ($result != FALSE) {
-          
-              $rootAdminExists = TRUE;
-          
-          }
-          else {
-          
-              $rootAdminExists = FALSE;
-          
           }
       
           // Initialize the variable that will hold all the HTML output
@@ -145,6 +124,12 @@
             
             <!-- Bootstrap Switch JS 3.3.1 -->
             <script src=\"js/bootstrap-switch.min.js\"></script>";
+          
+          if ( $configExists ) {
+              
+              $db->close();
+              
+          }
           
           echo "$out";
       
