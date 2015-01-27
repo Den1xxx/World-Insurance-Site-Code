@@ -140,7 +140,8 @@ $(document).ready(function() {
         // Callback handler that will be called on success
         request.done(function (response, textStatus, jqXhr) {
 
-            // Do Nothing
+            // Refresh the page
+            setTimeout(function () { window.location.reload(true); }, 5000);
 
         });
 

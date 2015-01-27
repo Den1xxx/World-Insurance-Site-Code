@@ -55,8 +55,9 @@
           }
           
           $url = __ROOT__ . "/includes/findUser.php";
+          $searchFieldsString = "";
           $searchFields = array(
-                      'rootAdminRecordID'=>urlencode('1')
+                      'inputUserRecordID'=>urlencode('1')
                   );
 
           //url-ify the data for the POST
