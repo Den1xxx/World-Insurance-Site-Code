@@ -55,9 +55,9 @@
             
             $SQLQuery = "SELECT * FROM `cm`.`CM_Users` WHERE userRecordID = 1;";
             
-            $result = $db->query($SQLQuery) === FALSE );
+            $result = $db->query($SQLQuery);
             
-            if ($response != FALSE) {
+            if ($result != FALSE) {
                 
                 $rootAdminExists = TRUE;
                 
