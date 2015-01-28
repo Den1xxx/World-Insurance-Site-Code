@@ -81,7 +81,8 @@ $(document).ready(function() {
 
     });
 
-    $("#loginForm").submit(function (event) {
+    $(document.body).on("click", '#loginButton', function (event) {
+    //$("#loginForm").submit(function (event) {
 
         // Abort any pending request
         if (request) {
@@ -91,7 +92,7 @@ $(document).ready(function() {
         }
 
         // setup some local variables
-        var $form = $(this);
+        var $form = document.forms["#loginForm"].getElementsByTagName("input");;
 
         // Let's select and cache all the fields
         var $inputs = $form.find("input, select, button, textarea");
