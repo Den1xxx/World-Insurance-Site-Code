@@ -52,7 +52,7 @@
                         
     }
                             
-    if( isset($_SESSION['userID']) ) {
+    if( isset($_SESSION['userEmail']) ) {
                             
         $out .= "<li class=\"dropdown\">
         <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\"

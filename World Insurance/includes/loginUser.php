@@ -1,5 +1,9 @@
 <?php
 
+    // Starts a new session
+    ob_start();
+    session_start();
+
     // Determine site content root
     define('__ROOT__', dirname(dirname(__FILE__)));
     
@@ -36,13 +40,22 @@
     // Fetch returned row
     $row = $result->fetch_row();
     
-    if( $row[2] == $preppedLoginUserEmail && $row[3] ==  )
+    if( $row[2] == $preppedLoginUserEmail && validate_password($preppedLoginUserPass, $row[3])  ) {
+    
+        $_SESSION["userEmail"] = "$row[2]";
+		$_SESSION["isAdmin"] = "$row[1]";
+		$_SESSION["accountNumber"] = "$row[4]";
         
+        return TRUE;
+    
+    }
+    
+    // Close the returned result
     $result->close();
 
+    // Close the database connection
     $db->close();
     
-    //return $result;
-    return "ended well";
+    return FALSE;
 
 ?>

@@ -85,6 +85,9 @@
         <!-- jQuery 1.11.2 -->
         <script src="js/jquery.min.js"></script>
 
+        <!-- jQuery JSON 2.5.1 -->
+        <script src="js/jquery.json.min.js"></script>
+
         <!-- Main JS 0.0.1 -->
         <script src="js/main.js"></script>
 

@@ -108,7 +108,7 @@ $(document).ready(function() {
         request = $.ajax({
 
             url: "includes/loginUser.php",
-            type: "POST",
+            type: "GET",
             data: serializedData
 
         });
@@ -116,8 +116,12 @@ $(document).ready(function() {
         // Callback handler that will be called on success
         request.done(function (response, textStatus, jqXhr) {
 
+            var accountNumber = $.evalJSON(response).accountNumber; // Grabs the account number from the returned JSON
+            var userEmail = $.evalJSON(response).userEmail; // Grabs the user email from the returned JSON
+            var isAdmin = $.evalJSON(response).isAdmin; // Grabs the is an admin from the returned JSON
+
             // Refresh the page
-            setTimeout(function () { window.location.reload(true); }, 5000);
+            //setTimeout(function () { window.location.reload(true); }, 5000);
 
         });
 
