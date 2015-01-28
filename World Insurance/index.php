@@ -76,65 +76,6 @@
                 </div>
             </div>
 
-            <!-- Login Modal -->
-            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <h4 class="modal-title" id="loginModalLabel">Login to access your policies</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form class="form-signin" id="loginForm">
-                                <h2 class="form-signin-heading" id="loginFormTitle">Please login</h2>
-                                <label for="inputLoginEmail" class="sr-only">Email</label>
-                                <input type="email" id="inputLoginEmail" class="form-control" placeholder="Email" required autofocus />
-                                <label for="inputLoginUserPass" class="sr-only">Password</label>
-                                <input type="password" id="inputLoginUserPass" class="form-control" placeholder="Password" required />
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                            <button id="loginButton" type="submit" class="btn btn-primary">Login</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Register Modal -->
-            <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <h4 class="modal-title" id="registerModalLabel">Register</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form class="form-signin" id="registerForm">
-                                <h2 class="form-signin-heading" id="registerFormTitle">Please register</h2>
-                                <label for="inputRegisterEmail" class="sr-only">Email</label>
-                                <input type="email" id="inputRegisterEmail" class="form-control" placeholder="Email" required autofocus />
-                                <label for="inputRegisterUserPass" class="sr-only">Password</label>
-                                <input type="password" id="inputRegisterUserPass" class="form-control" placeholder="Password" required />
-                                <label for="inputRegisterUserPassRepeat" class="sr-only">Repeat Password</label>
-                                <input type="password" id="inputRegisterUserPassRepeat" class="form-control" placeholder="Repeat Password" required />
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                            <button id="registerButton" type="submit" class="btn btn-primary">Register</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /container -->
-
         <footer class="footer">
             <div class="container">
                 <p class="text-muted">&copy; World Insurance 2014 Site Created &amp; Managed by techsym</p>
