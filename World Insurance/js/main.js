@@ -81,6 +81,7 @@ $(document).ready(function() {
 
     });
 
+    // Bind to the submit event of the adminCreationForm form
     $(document.body).on("submit", "#loginForm", function(event) {
 
         // Abort any pending request
@@ -157,10 +158,96 @@ $(document).ready(function() {
 
     });
 
+    // Allow the login form to be submitted by a button outside of the form
     $(document.body).on("click", "#loginButton", function () {
 
         // Submit the loginForm
         $("#loginForm").submit();
+
+    });
+
+    // Bind to the submit event of the adminCreationForm form
+    $(document.body).on("submit", "#registerForm", function (event) {
+
+        // Abort any pending request
+        if (request) {
+
+            request.abort();
+
+        }
+
+        // setup some local variables
+        var $form = $(this);
+
+        // Let's select and cache all the fields
+        var $inputs = $form.find("input, select, button, textarea");
+
+        // Serialize the data in the form
+        var serializedData = $form.serialize();
+
+        // Let's disable the inputs for the duration of the Ajax request.
+        // Note: we disable elements AFTER the form data has been serialized.
+        // Disabled form elements will not be serialized.
+        $inputs.prop("disabled", true);
+
+        // Fire off the POST request to writeConfig.php
+        request = $.ajax({
+
+            url: "includes/loginUser.php",
+            type: "GET",
+            data: serializedData
+
+        });
+
+        // Callback handler that will be called on success
+        request.done(function (response, textStatus, jqXhr) {
+
+            var returnStatus = $.evalJSON(response).returnStatus; // Grabs the return status from the returned JSON
+            var errorLog = $.evalJSON(response).errorLog; // Grabs the error log from the returned JSON
+
+            if (returnStatus === "Success") {
+
+                // Refresh the page
+                setTimeout(function () { window.location.reload(true); }, 1);
+
+            } else {
+
+                alert("Wrong email or password!");
+
+            }
+
+        });
+
+        // Callback handler that will be called on failure
+        request.fail(function (jqXhr, textStatus, errorThrown) {
+
+            // Log the error to the console
+            console.error(
+               "The following error occurred: " +
+                  textStatus, errorThrown
+            );
+
+        });
+
+        // Callback handler that will be called regardless
+        // if the request failed or succeeded
+        request.always(function () {
+
+            // Reenable the inputs
+            $inputs.prop("disabled", false);
+
+        });
+
+        // Prevent default posting of form
+        event.preventDefault();
+
+    });
+
+    // Allow the registration form to be submitted by a button outside of the form
+    $(document.body).on("click", "#registerButton", function () {
+
+        // Submit the loginForm
+        $("#registerForm").submit();
 
     });
 
