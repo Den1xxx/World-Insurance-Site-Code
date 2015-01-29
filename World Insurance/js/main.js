@@ -193,8 +193,8 @@ $(document).ready(function() {
         // Fire off the POST request to writeConfig.php
         request = $.ajax({
 
-            url: "includes/loginUser.php",
-            type: "GET",
+            url: "includes/addUser.php",
+            type: "POST",
             data: serializedData
 
         });
@@ -212,7 +212,7 @@ $(document).ready(function() {
 
             } else {
 
-                alert("Wrong email or password!");
+                alert("Unable to register account");
 
             }
 

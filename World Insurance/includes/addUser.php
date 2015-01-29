@@ -7,6 +7,12 @@
     require_once( __ROOT__ . "/includes/database.php" );
     require_once( __ROOT__ . "/includes/createHash.php" );
     
+    // Setups up return array
+    $ret = array(
+		'returnStatus' => "",
+		'errorLog' => ""
+	);
+    
     $dbObject = new Database;
     $db = $dbObject->createDatabaseConnection();
 
@@ -14,7 +20,11 @@
     if ($db->connect_errno) {
         
         error_log( "Connection failed: " . $db->connect_error );
-        return FALSE;
+        
+        $ret["returnStatus"] = "Fail";
+        $ret["errorLog"] = "Connection failed: " . $db->connect_error;
+        
+        echo json_encode($ret);
         
     }
     
@@ -33,13 +43,19 @@
     
     if ( $db->query($SQLQuery) === FALSE ) {
         
-        error_log( "Error creating table: " . $db->error );
-        return FALSE;
+        error_log( "Error creating record: " . $db->error );
+        
+        $ret["returnStatus"] = "Fail";
+        $ret["errorLog"] = "Error finding record: " . $db->error;
+        
+        echo json_encode($ret);
         
     }
 
     $db->close();
     
-    return TRUE;
+    $ret["returnStatus"] = "Success";
+    
+    echo json_encode($ret);
 
 ?>

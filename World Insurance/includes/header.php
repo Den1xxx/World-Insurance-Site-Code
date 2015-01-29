@@ -105,7 +105,7 @@
                         </div>
                         <div class=\"modal-footer\">
                             <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Cancel</button>
-                            <button form=\"loginForm\" id=\"loginButton\" type=\"submit\" class=\"btn btn-primary\">Login</button>
+                            <button id=\"loginButton\" type=\"submit\" class=\"btn btn-primary\">Login</button>
                         </div>
                     </div>
                 </div>
