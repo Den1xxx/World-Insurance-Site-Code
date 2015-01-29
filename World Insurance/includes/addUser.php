@@ -31,8 +31,6 @@
     
     $SQLQuery = "INSERT INTO `cm`.`CM_Users` (`userRecordID`, `isAdmin`, `userEmail`, `userPassword`, `accountNumber`) VALUES (NULL, '$preppedNewIsAdmin', '$preppedNewUserEmail', '$preppedNewUserPass', '$preppedNewUserAccountNumber');";
     
-    //$SQLQuery = $db->real_escape_string($SQLQuery);
-    
     if ( $db->query($SQLQuery) === FALSE ) {
         
         error_log( "Error creating table: " . $db->error );

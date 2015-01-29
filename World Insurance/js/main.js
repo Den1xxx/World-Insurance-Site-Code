@@ -81,8 +81,7 @@ $(document).ready(function() {
 
     });
 
-    $(document.body).on("click", '#loginButton', function (event) {
-    //$("#loginForm").submit(function (event) {
+    $(document.body).on("submit", "#loginForm", function(event) {
 
         // Abort any pending request
         if (request) {
@@ -92,7 +91,7 @@ $(document).ready(function() {
         }
 
         // setup some local variables
-        var $form = document.forms["#loginForm"].getElementsByTagName("input");;
+        var $form = $(this);
 
         // Let's select and cache all the fields
         var $inputs = $form.find("input, select, button, textarea");
@@ -117,12 +116,19 @@ $(document).ready(function() {
         // Callback handler that will be called on success
         request.done(function (response, textStatus, jqXhr) {
 
-            var accountNumber = $.evalJSON(response).accountNumber; // Grabs the account number from the returned JSON
-            var userEmail = $.evalJSON(response).userEmail; // Grabs the user email from the returned JSON
-            var isAdmin = $.evalJSON(response).isAdmin; // Grabs the is an admin from the returned JSON
+            var returnStatus = $.evalJSON(response).returnStatus; // Grabs the return status from the returned JSON
+            var errorLog = $.evalJSON(response).errorLog; // Grabs the error log from the returned JSON
 
-            // Refresh the page
-            //setTimeout(function () { window.location.reload(true); }, 5000);
+            if (returnStatus === "Success") {
+
+                // Refresh the page
+                setTimeout(function() { window.location.reload(true); }, 1);
+
+            } else {
+                
+                alert("Wrong email or password!");
+
+            }
 
         });
 
@@ -148,6 +154,13 @@ $(document).ready(function() {
 
         // Prevent default posting of form
         event.preventDefault();
+
+    });
+
+    $(document.body).on("click", "#loginButton", function () {
+
+        // Submit the loginForm
+        $("#loginForm").submit();
 
     });
 
