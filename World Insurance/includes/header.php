@@ -68,7 +68,7 @@
             </li>
             <li class=\"divider\"></li>
             <li>
-                <a href=\"#\">Logout</a>
+                <a href=\"logout.php\">Logout</a>
             </li>
         </ul>
     </li>";
