@@ -185,6 +185,9 @@ $(document).ready(function() {
         // Serialize the data in the form
         var serializedData = $form.serialize();
 
+        // Append the fact that the user is not an admin
+        serializedData += "&inputIsAdmin=0";
+
         // Let's disable the inputs for the duration of the Ajax request.
         // Note: we disable elements AFTER the form data has been serialized.
         // Disabled form elements will not be serialized.
@@ -206,6 +209,8 @@ $(document).ready(function() {
             var errorLog = $.evalJSON(response).errorLog; // Grabs the error log from the returned JSON
 
             if (returnStatus === "Success") {
+
+                alert("Registered successful!");
 
                 // Refresh the page
                 setTimeout(function () { window.location.reload(true); }, 1);
