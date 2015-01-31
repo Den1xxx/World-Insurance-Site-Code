@@ -52,7 +52,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\dashboard.css" />
     <Content Include="css\jumbotron.css" />
-    <Content Include="css\signin.css" />
+    <Content Include="css\form.css" />
     <Content Include="css\sticky-footer.css" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
