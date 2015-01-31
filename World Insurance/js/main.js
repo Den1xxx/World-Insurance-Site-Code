@@ -210,7 +210,7 @@ $(document).ready(function() {
 
             if (returnStatus === "Success") {
 
-                alert("Registered successful!");
+                alert("Registration successful!");
 
                 // Refresh the page
                 setTimeout(function () { window.location.reload(true); }, 1);
