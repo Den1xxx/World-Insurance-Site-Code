@@ -65,17 +65,28 @@
                 <form class="form-signin" id="searchForm">
                     <h2 class="form-signin-heading" id="searchFormTitle">Search Criteria</h2>
                     <label for="inputSearchAccountNumber" class="sr-only">Account Number</label>
-                    <input type="email" id="inputSearchAccountNumber" name="inputSearchAccountNumber" class="form-control" placeholder="Account Number" autofocus />
+                    <input type="email" id="inputSearchAccountNumber" name="inputSearchAccountNumber" onkeyup="searchCustomer(1)" class="form-control" placeholder="Account Number" autofocus />
                     <label for="inputSearchFirstName" class="sr-only">First Name</label>
-                    <input type="text" id="inputSearchFirstName" name="inputSearchFirstName" class="form-control form-last" placeholder="First Name" />
-                    <button id="loginButton" type="submit" class="btn btn-primary">Login</button>
+                    <input type="text" id="inputSearchFirstName" name="inputSearchFirstName" onkeyup="searchCustomer(2)" class="form-control form-last" placeholder="First Name" />
                 </form>
-                    
+
+                <h2 class="sub-header">Results</h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Account #</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Zip</th>
+                                </tr>
+                            </thead>
+                            <tbody id="searchResults" />
+                        </table>
+                    </div>
             </div>
             </div>
         </div>
-
-
 
         <footer class="footer">
             <div class="container">

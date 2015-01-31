@@ -10,10 +10,9 @@
     require_once( __ROOT__ . "/config.php" );
     require_once( __ROOT__ . "/includes/database.php" );
     require_once( __ROOT__ . "/includes/createHash.php" );
-
-    // Setups up return array
+    
+    // Sets up return array
     $ret = array(
-        'returnObject' => "",
         'returnStatus' => "",
         'errorLog' => ""
     );
@@ -33,49 +32,35 @@
     
     }
 
-    $customerAccountNumber = $_SESSION[ 'accountNumber' ];
+    $customerAccountNumber  = $_GET[ 'inputSearchAccountNumber' ];
+    $customerFirstName      = $_GET[ 'inputSearchFirstName' ];
 
-    $SQLQuery = "SELECT * FROM `cm`.`CM_Customers` WHERE `accountNumber` = '$customerAccountNumber';";
+    $SQLQuery = "SELECT * FROM `cm`.`CM_Customers` WHERE `accountNumber` LIKE '%$customerAccountNumber%';";
 
     $result = $db->query($SQLQuery);
 
-    if ( $result === FALSE ) {
-    
-        error_log( "Error finding record: " . $db->error );
-    
-        $ret["returnStatus"] = "Fail";
-        $ret["errorLog"] = "Error finding record: " . $db->error;
-    
-        echo json_encode($ret);
-    
+    while($row = $result->fetch_row()) {
+            
+        $accountNumber  = $row["accountNumber"];
+        $firstName      = $row["customerFirstName"];
+        $lastName       = $row["customerLastName"];
+        $zip            = $row["customerZip"];
+            
+        echo
+            "<tr>" . 
+            "   <td>$accountNumber</td>" .
+            "   <td>$firstName</td>" .
+            "   <td>$lastName</td>" .
+            "   <td>$zip</td>" .
+            "</tr>";
+            
     }
-
-    // Fetch returned row
-    $row = $result->fetch_row();
 
     // Close the returned result
     $result->close();
 
     // Close the database connection
     $db->close();
-
-    if( $row[2] == $preppedLoginUserEmail && validate_password($preppedLoginUserPass, $row[3])  ) {
-    
-        $_SESSION["userEmail"] = "$row[2]";
-        $_SESSION["isAdmin"] = "$row[1]";
-        $_SESSION["accountNumber"] = "$row[4]";
-    
-        $ret["returnStatus"] = "Success";
-    
-        echo json_encode($ret);
-    
-    }
-    else {
-    
-        $ret["returnStatus"] = "Fail";
-        $ret["errorLog"] = "Bad login";
-    
-        echo json_encode($ret);
     
     }
 
