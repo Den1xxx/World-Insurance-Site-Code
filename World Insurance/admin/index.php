@@ -1,7 +1,7 @@
 <?php
-// Starts a new session
-ob_start();
-session_start();
+    // Starts a new session
+    ob_start();
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -43,6 +43,12 @@ session_start();
     <body>
         <?php
             require_once(__ROOT__ . "/includes/header.php");
+            
+            if( $_SESSION['isAdmin'] == FALSE ) {
+                
+                die ("You do not have the required access to see this page!");
+                
+            }
         ?>
 
         <div class="container-fluid">
