@@ -42,6 +42,19 @@
             require_once(__ROOT__ . "/includes/header.php");
         ?>
 
+        <p>
+            <br /><br /><br />
+            Details on your insurance policy are below:
+            <br />
+            <?php
+                $accountNumber  = $_SESSION["accountNumber"];
+                $firstName      = $_SESSION["firstName"];
+                echo "Account Number: $accountNumber
+                <br />
+                First Name: $firstName";
+            ?>
+        </p>
+
         <footer class="footer">
             <div class="container">
                 <p class="text-muted">&copy; World Insurance 2014 Site Created &amp; Managed by techsym</p>

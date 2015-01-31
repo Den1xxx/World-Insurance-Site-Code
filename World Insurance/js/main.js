@@ -126,8 +126,17 @@ $(document).ready(function() {
                 setTimeout(function() { window.location.reload(true); }, 1);
 
             } else {
-                
-                alert("Wrong email or password!");
+
+                if (returnStatus === "Fail User") {
+
+                    alert("Wrong email or password!");
+
+                } else {
+                    
+                    // Refresh the page
+                    setTimeout(function () { window.location.reload(true); }, 1);
+
+                }
 
             }
 
