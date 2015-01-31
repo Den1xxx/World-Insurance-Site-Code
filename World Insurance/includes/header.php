@@ -48,34 +48,44 @@
                         
         if( $currentPage == "/admin" ) {
         
-            $out .= "<li class=\"active\">
-            <a href=\"admin\">Admin</a>
-        </li>";
+            $out .= "<li class=\"active\">";
+            
         
         }
         else {
         
-            $out .= "<li>
-            <a href=\"admin\">Admin</a>
-        </li>";
+            $out .= "<li>";
         
         }
+        
+        $out .= "<a href=\"admin\">Admin</a>
+        </li>";
                         
     }
                             
     if( isset($_SESSION['userEmail']) ) {
-                            
-        $out .= "<li class=\"dropdown\">
-        <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\"
+
+        if( $currentPage == "/account" ) {
+        
+            $out .= "<li class=\"active dropdown\">";
+        
+        }
+        else {
+        
+            $out .= "<li class=\"dropdown\">";
+        
+        }
+        
+        $out .= "<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\"
             aria-expanded=\"false\">
             Account <span class=\"caret\"></span>
         </a>
         <ul class=\"dropdown-menu\" role=\"menu\">
             <li>
-                <a href=\"#\">Profile</a>
+                <a href=\"account\">Profile</a>
             </li>
             <li>
-                <a href=\"#\">Policies</a>
+                <a href=\"account/policies.php\">Policies</a>
             </li>
             <li class=\"divider\"></li>
             <li>
@@ -83,11 +93,6 @@
             </li>
         </ul>
     </li>";
-                            
-    }
-    else if( $currentPage == "/worldins/setup.php" ) {
-                            
-        // Do nothing
                             
     }
     else {

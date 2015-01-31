@@ -17,6 +17,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="account\index.php" />
+    <Compile Include="account\policies.php" />
     <Compile Include="admin\index.php" />
     <Compile Include="config.php" />
     <Compile Include="includes\findUser.php" />
