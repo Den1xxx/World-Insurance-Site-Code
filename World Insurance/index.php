@@ -18,6 +18,12 @@
         <!-- Bootstrap Theme CSS 3.3.2 -->
         <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
 
+        <!-- Sticky Footer CSS -->
+        <link rel="stylesheet" href="css/sticky-footer.css" />
+
+        <!-- Jumbotron CSS -->
+        <link rel="stylesheet" href="css/jumbotron.css" />
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!-- HTML5 Shiv 3.7.2 -->
