@@ -25,6 +25,7 @@
     <Compile Include="includes\database.php" />
     <Compile Include="includes\header.php" />
     <Compile Include="includes\loginUser.php" />
+    <Compile Include="includes\sidebar.php" />
     <Compile Include="includes\writeConfig.php" />
     <Compile Include="index.php" />
     <Compile Include="logout.php" />
