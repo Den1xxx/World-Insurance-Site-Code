@@ -36,7 +36,7 @@ session_start();
         <?php
         
         // Determine site content root
-        define('__ROOT__', dirname(__FILE__));
+        define('__ROOT__', dirname(dirname(__FILE__)));
         
         ?>
     </head>

@@ -46,9 +46,20 @@
     // Only displays the admin link in the navbar if an admin is logged in
     if( $_SESSION['isAdmin'] == TRUE ) {
                         
-        $out .= "<li>
-            <a href=\"admin.php\">Admin</a>
+        if( $currentPage == "/admin" ) {
+        
+            $out .= "<li class=\"active\">
+            <a href=\"admin\">Admin</a>
         </li>";
+        
+        }
+        else {
+        
+            $out .= "<li>
+            <a href=\"admin\">Admin</a>
+        </li>";
+        
+        }
                         
     }
                             
