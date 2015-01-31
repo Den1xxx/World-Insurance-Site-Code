@@ -1,7 +1,7 @@
 <?php
-// Starts a new session
-ob_start();
-session_start();
+    // Starts a new session
+    ob_start();
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ session_start();
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Admin Dashboard</title>
+        <title>Search Customers</title>
 
         <!-- Bootstrap CSS 3.3.2 -->
         <link href="../css/bootstrap.min.css" rel="stylesheet" />
@@ -62,12 +62,12 @@ session_start();
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
               <h1 class="page-header">Search Customers</h1>
 
-                <form class="form-signin" id="loginForm">
-                    <h2 class="form-signin-heading" id="loginFormTitle">Please login</h2>
-                    <label for="inputLoginEmail" class="sr-only">Email</label>
-                    <input type="email" id="inputLoginEmail" name="inputLoginEmail" class="form-control" placeholder="Email" required autofocus />
-                    <label for="inputLoginUserPass" class="sr-only">Password</label>
-                    <input type="password" id="inputLoginUserPass" name="inputLoginUserPass" class="form-control" placeholder="Password" required />
+                <form class="form-signin" id="searchForm">
+                    <h2 class="form-signin-heading" id="searchFormTitle">Search Criteria</h2>
+                    <label for="inputSearchAccountNumber" class="sr-only">Account Number</label>
+                    <input type="email" id="inputSearchAccountNumber" name="inputSearchAccountNumber" class="form-control" placeholder="Account Number" autofocus />
+                    <label for="inputSearchFirstName" class="sr-only">First Name</label>
+                    <input type="text" id="inputSearchFirstName" name="inputSearchFirstName" class="form-control form-last" placeholder="First Name" />
                     <button id="loginButton" type="submit" class="btn btn-primary">Login</button>
                 </form>
                     
