@@ -17,7 +17,7 @@
                             <span class=\"icon-bar\"></span>
                             <span class=\"icon-bar\"></span>
                         </button>
-                        <a class=\"navbar-brand\" href=\"index.php\">World Insurance</a>
+                        <a class=\"navbar-brand\" href=\"../\">World Insurance</a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -38,7 +38,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href=\"about.php\">About</a>
+                                <a href=\"../about.php\">About</a>
                             </li>
                         </ul>
                         <ul class=\"nav navbar-nav navbar-right\">";
@@ -58,14 +58,14 @@
         
         }
         
-        $out .= "<a href=\"admin\">Admin</a>
+        $out .= "<a href=\"../admin\">Admin</a>
         </li>";
                         
     }
                             
     if( isset($_SESSION['userEmail']) ) {
 
-        if( $currentPage == "/account" ) {
+        if( $currentPage == "/account" || $currentPage == "/account/policies.php" ) {
         
             $out .= "<li class=\"active dropdown\">";
         
@@ -82,14 +82,14 @@
         </a>
         <ul class=\"dropdown-menu\" role=\"menu\">
             <li>
-                <a href=\"account\">Profile</a>
+                <a href=\"../account\">Profile</a>
             </li>
             <li>
-                <a href=\"account/policies.php\">Policies</a>
+                <a href=\"../account/policies.php\">Policies</a>
             </li>
             <li class=\"divider\"></li>
             <li>
-                <a href=\"logout.php\">Logout</a>
+                <a href=\"../logout.php\">Logout</a>
             </li>
         </ul>
     </li>";

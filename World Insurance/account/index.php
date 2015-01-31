@@ -10,16 +10,16 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>World Insurance Home Page</title>
+        <title>My Account</title>
 
         <!-- Bootstrap CSS 3.3.2 -->
-        <link href="css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../css/bootstrap.min.css" rel="stylesheet" />
 
         <!-- Bootstrap Theme CSS 3.3.2 -->
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+        <link rel="stylesheet" href="../css/bootstrap-theme.min.css" />
 
         <!-- Sticky Footer CSS -->
-        <link rel="stylesheet" href="css/sticky-footer.css" />
+        <link rel="stylesheet" href="../css/sticky-footer.css" />
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -49,21 +49,21 @@
         </footer>
 
         <!-- jQuery 1.11.2 -->
-        <script src="js/jquery.min.js"></script>
+        <script src="../js/jquery.min.js"></script>
 
         <!-- jQuery JSON 2.5.1 -->
-        <script src="js/jquery.json.min.js"></script>
+        <script src="../js/jquery.json.min.js"></script>
 
         <!-- Main JS 0.0.1 -->
-        <script src="js/main.js"></script>
+        <script src="../js/main.js"></script>
 
         <!-- Bootstrap JS 3.3.2 -->
-        <script src="js/bootstrap.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
 
         <!-- Bootstrap Switch JS 3.3.1 -->
-        <script src="js/bootstrap-switch.min.js"></script>
+        <script src="../js/bootstrap-switch.min.js"></script>
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="js/ie10-viewport-bug-workaround.js"></script>
+        <script src="../js/ie10-viewport-bug-workaround.js"></script>
     </body>
 </html>
