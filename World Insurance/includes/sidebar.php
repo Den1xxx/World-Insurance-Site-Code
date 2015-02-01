@@ -43,8 +43,20 @@
    
    }
    
+   if( $currentPage == "/admin/addCustomer.php" ) {
+   
+        $out .=
+            "        <li class=\"active\"><a href=\"../admin/addCustomer.php\">Add Customers</a></li>";
+   
+   }
+   else {
+   
+        $out .=
+            "        <li><a href=\"../admin/addCustomer.php\">Add Customers</a></li>";
+   
+   }
+   
    $out .=
-       "        <li><a href=\"../admin/addCustomer.php\">Add Customers</a></li>" .
        "    </ul>" .
        "    <ul class=\"nav nav-sidebar\">" .
        "        <li><a href=\"\">Nav item again</a></li>" .
