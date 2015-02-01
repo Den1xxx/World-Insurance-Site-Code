@@ -59,48 +59,95 @@ $(document).ready(function() {
         // Disabled form elements will not be serialized.
         $inputs.prop("disabled", true);
 
-        if ($(this).find(".e-clicked").attr("id") === "addCustomerAddButton") {
+        if ($(this).find(".e-clicked").attr("id") === "addCustomerCancelButton") {
 
-            $("#addCustomerForm").trigger("reset"); // Resets Add Customer Form to its default state
+            // Resets Add Customer Form to its default state
+            $("#addCustomerForm").trigger("reset");
 
-        }
-
-        // Fire off the POST request to writeConfig.php
-        request = $.ajax({
-
-            url: "addCustomer.php",
-            type: "POST",
-            data: serializedData
-
-        });
-
-        // Callback handler that will be called on success
-        request.done(function (response, textStatus, jqXhr) {
-
-            // Refresh the page
-            setTimeout(function () { window.location.reload(true); }, 5000);
-
-        });
-
-        // Callback handler that will be called on failure
-        request.fail(function (jqXhr, textStatus, errorThrown) {
-
-            // Log the error to the console
-            console.error(
-               "The following error occurred: " +
-                  textStatus, errorThrown
-            );
-
-        });
-
-        // Callback handler that will be called regardless
-        // if the request failed or succeeded
-        request.always(function () {
+            // Removes the e-clicked class from the cancel button
+            $("#addCustomerCancelButton").removeClass("e-clicked");
 
             // Reenable the inputs
             $inputs.prop("disabled", false);
 
-        });
+
+        } else {
+
+            if ($(this).find(".e-clicked").attr("id") === "addCustomerAddButton") {
+                
+                // Fire off the POST request to writeConfig.php
+                request = $.ajax({
+
+                    url: "../includes/addCustomerToDB.php",
+                    type: "POST",
+                    data: serializedData
+
+                });
+
+                // Callback handler that will be called on success
+                request.done(function (response, textStatus, jqXhr) {
+
+                    var returnStatus = $.evalJSON(response).returnStatus; // Grabs the return status from the returned JSON
+                    var errorLog = $.evalJSON(response).errorLog; // Grabs the error log from the returned JSON
+
+                    if (returnStatus === "Success") {
+
+                        // Tell the user that the customer was added successfully
+                        alert("Customer added successfully!");
+
+                        // Resets Add Customer Form to its default state
+                        $("#addCustomerForm").trigger("reset");
+
+                        // Removes the e-clicked class from the add button
+                        $("#addCustomerAddButton").removeClass("e-clicked");
+
+                    } else {
+
+                        if (returnStatus === "Duplicate Account Number") {
+
+                            // Tell the user that a customer with this account number already exists
+                            alert("A customer with this account number already exists!");
+
+                            // Removes the e-clicked class from the add button
+                            $("#addCustomerAddButton").removeClass("e-clicked");
+
+                        } else {
+
+                            // Tell the user that the record was unable to be added
+                            alert("Unable to add new customer!");
+
+                            // Removes the e-clicked class from the add button
+                            $("#addCustomerAddButton").removeClass("e-clicked");
+
+                        }
+
+                    }
+
+                });
+
+                // Callback handler that will be called on failure
+                request.fail(function (jqXhr, textStatus, errorThrown) {
+
+                    // Log the error to the console
+                    console.error(
+                       "The following error occurred: " +
+                          textStatus, errorThrown
+                    );
+
+                });
+
+                // Callback handler that will be called regardless
+                // if the request failed or succeeded
+                request.always(function () {
+
+                    // Reenable the inputs
+                    $inputs.prop("disabled", false);
+
+                });
+
+            }
+
+        }
 
         // Prevent default posting of form
         event.preventDefault();

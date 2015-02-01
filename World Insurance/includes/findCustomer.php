@@ -9,7 +9,6 @@
 
     require_once( __ROOT__ . "/config.php" );
     require_once( __ROOT__ . "/includes/database.php" );
-    require_once( __ROOT__ . "/includes/createHash.php" );
     
     // Sets up return array
     $ret = array(
