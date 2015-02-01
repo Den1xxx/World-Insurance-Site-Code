@@ -34,17 +34,33 @@
 
     $customerAccountNumber  = $_GET[ 'inputSearchAccountNumber' ];
     $customerFirstName      = $_GET[ 'inputSearchFirstName' ];
+    
+    if($customerAccountNumber == "" && $customerFirstName == "") {
+    
+        die();
+    
+    }
+    else if($customerAccountNumber == "") {
+    
+        $customerAccountNumber = "999999999";
+    
+    }
+    else if($customerFirstName == "") {
+    
+        $customerFirstName = "NULL";
+    
+    }
 
-    $SQLQuery = "SELECT * FROM `cm`.`CM_Customers` WHERE `accountNumber` LIKE '%$customerAccountNumber%';";
-
+    $SQLQuery = "SELECT * FROM `cm`.`CM_Customers` WHERE (`accountNumber` LIKE '%$customerAccountNumber%' OR `customerFirstName` LIKE '%$customerFirstName%') ORDER BY `accountNumber` DESC;";
+    
     $result = $db->query($SQLQuery);
 
     while($row = $result->fetch_row()) {
             
-        $accountNumber  = $row["accountNumber"];
-        $firstName      = $row["customerFirstName"];
-        $lastName       = $row["customerLastName"];
-        $zip            = $row["customerZip"];
+        $accountNumber  = $row[1];
+        $firstName      = $row[2];
+        $lastName       = $row[3];
+        $zip            = $row[4];
             
         echo
             "<tr>" . 
@@ -61,7 +77,5 @@
 
     // Close the database connection
     $db->close();
-    
-    }
 
 ?>
