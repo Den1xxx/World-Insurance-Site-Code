@@ -129,14 +129,20 @@
             "                               <tr>" . 
             "                                   <td>" .
             "                                       <label for=\"inputGenModalAccountNumber\" class=\"sr-only\">Account Number</label>" .
-            "                                       <input type=\"text\" id=\"inputGenModalAccountNumber\" name=\"inputGenModalAccountNumber\" class=\"form-control form-middle\" value=\"$accountNumber\" autocomplete=\"off\" autofocus />" .
+            "                                       <input type=\"text\" id=\"inputGenModalAccountNumber\" name=\"inputGenModalAccountNumber\" class=\"form-control form-middle\" value=\"$accountNumber\" autocomplete=\"off\" />" .
             "                                   </td>" .
             "                                   <td>" .
             "                                       <label for=\"inputGenModalFirstName\" class=\"sr-only\">First Name</label>" .
-            "                                       <input type=\"text\" id=\"inputGenModalFirstName\" name=\"inputGenModalFirstName\" class=\"form-control form-middle\" value=\"$firstName\" autocomplete=\"off\" autofocus />" .
+            "                                       <input type=\"text\" id=\"inputGenModalFirstName\" name=\"inputGenModalFirstName\" class=\"form-control form-middle\" value=\"$firstName\" autocomplete=\"off\" />" .
             "                                   </td>" .
-            "                                   <td>$lastName</td>" .
-            "                                   <td>$zip</td>" .
+            "                                   <td>" .
+            "                                       <label for=\"inputGenModalLastName\" class=\"sr-only\">Last Name</label>" .
+            "                                       <input type=\"text\" id=\"inputGenModalLastName\" name=\"inputGenModalLastName\" class=\"form-control form-middle\" value=\"$lastName\" autocomplete=\"off\" />" .
+            "                                   </td>" .
+            "                                   <td>" .
+            "                                       <label for=\"inputGenModalZip\" class=\"sr-only\">Zip</label>" .
+            "                                       <input type=\"text\" id=\"inputGenModalZip\" name=\"inputGenModalZip\" class=\"form-control form-middle\" value=\"$zip\" autocomplete=\"off\" />" .
+            "                                   </td>" .
             "                               </tr>" .
             "                           </tbody>" .
             "                       </table>" .
