@@ -46,7 +46,7 @@
     // Only displays the admin link in the navbar if an admin is logged in
     if( $_SESSION['isAdmin'] == TRUE ) {
                         
-        if( $currentPage == "/admin" ) {
+        if( $currentPage == "/admin" || $currentPage == "/admin/searchCustomer.php" || $currentPage == "/admin/addCustomer.php" ) {
         
             $out .= "<li class=\"active\">";
             
