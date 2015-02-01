@@ -50,6 +50,13 @@ function searchCustomer() {
 
 }
 
+// Allow buttons on auto generated modal forms to be clickable
+function modalGenSubmit() {
+    
+    alert("test");
+
+}
+
 $(document).ready(function() {
    
     // Variable to hold current request

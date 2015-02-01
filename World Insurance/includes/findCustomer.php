@@ -90,6 +90,7 @@
     while($row = $result->fetch_row()) {
         
         $count++;
+        $innerModalFieldEditCount = 4;
             
         $accountNumber  = $row[1];
         $firstName      = $row[2];
@@ -99,6 +100,7 @@
         $currentModalName = "view" . "$count" . "CustomerModal";
         $currentModalNameBtn = "#" . $currentModalName;
         $currentModalLabelName = "$currentModalName" . "Label";
+        $curentModalNameBtnAccountNumber = $currentModalNameBtn . "AccountNumber";
         
         $modal .= 
             "<!-- $currentModalName Modal -->" .
@@ -112,10 +114,38 @@
             "               <h4 class=\"modal-title\" id=\"$currentModalLabelName\">$firstName $lastName's Policy Info</h4>" .
             "           </div>" .
             "           <div class=\"modal-body\">" .
-            "               <p>$accountNumber</p>" .
+            "               <form class=\"form-signin\" id=\"$currentModalName\" onsubmit=\"modalGenSubmit()\">" .
+            "                   <div class=\"table-responsive\">" .
+            "                       <table class=\"table\">" .
+            "                           <thead>" .
+            "                               <tr>" .
+            "                                   <th>Account #</th>" .
+            "                                   <th>First Name</th>" .
+            "                                   <th>Last Name</th>" .
+            "                                   <th>Zip</th>" .
+            "                               </tr>" .
+            "                           </thead>" .
+            "                           <tbody>" .
+            "                               <tr>" . 
+            "                                   <td>" .
+            "                                       <label for=\"inputGenModalAccountNumber\" class=\"sr-only\">Account Number</label>" .
+            "                                       <input type=\"text\" id=\"inputGenModalAccountNumber\" name=\"inputGenModalAccountNumber\" class=\"form-control form-middle\" value=\"$accountNumber\" autocomplete=\"off\" autofocus />" .
+            "                                   </td>" .
+            "                                   <td>" .
+            "                                       <label for=\"inputGenModalFirstName\" class=\"sr-only\">First Name</label>" .
+            "                                       <input type=\"text\" id=\"inputGenModalFirstName\" name=\"inputGenModalFirstName\" class=\"form-control form-middle\" value=\"$firstName\" autocomplete=\"off\" autofocus />" .
+            "                                   </td>" .
+            "                                   <td>$lastName</td>" .
+            "                                   <td>$zip</td>" .
+            "                               </tr>" .
+            "                           </tbody>" .
+            "                       </table>" .
+            "                   </div>" .
+            "               </form>" .
             "           </div>" .
             "           <div class=\"modal-footer\">" .
             "               <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>" .
+            "               <button type=\"submit\" class=\"btn btn-primary\">Update</button>" .
             "           </div>" .
             "       </div>" .
             "   </div>" .
