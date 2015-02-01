@@ -62,8 +62,8 @@
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
               <h1 class="page-header">Add Customers</h1>
 
-                <form class="form-signin" id="addForm" onsubmit="return false;">
-                    <h2 class="form-signin-heading" id="addFormTitle">New Customer Info</h2>
+                <form class="form-signin" id="addCustomerForm" onsubmit="return false;">
+                    <h2 class="form-signin-heading" id="addCustomerFormTitle">New Customer Info</h2>
                     <label for="inputNewAccountNumber" class="sr-only">Account Number</label>
                     <input type="text" id="inputNewAccountNumber" name="inputNewAccountNumber" class="form-control form-first" placeholder="Account Number" autocomplete="off" autofocus />
                     <label for="inputNewFirstName" class="sr-only">First Name</label>
@@ -72,6 +72,10 @@
                     <input type="text" id="inputNewLastName" name="inputNewLastName" class="form-control form-middle" placeholder="Last Name" autocomplete="off" />
                     <label for="inputNewZip" class="sr-only">Zip Code</label>
                     <input type="text" id="inputNewZip" name="inputNewZip" class="form-control form-last" placeholder="Zip Code" autocomplete="off" />
+                    <div style="text-align: right;">
+                        <button id="addCustomerCancelButton" type="submit" class="btn btn-default">Cancel</button>
+                        <button id="addCustomerAddButton" type="submit" class="btn btn-primary">Add</button>
+                    </div>
                 </form>
             </div>
             </div>

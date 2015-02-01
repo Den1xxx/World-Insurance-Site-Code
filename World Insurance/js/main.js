@@ -20,6 +20,92 @@ $(document).ready(function() {
    
     // Variable to hold current request
     var request;
+
+    // Allows the ability to detect if the cancel button on the Add Customer form was clicked
+    $("#addCustomerCancelButton").click(function () {
+
+        $(this).addClass("e-clicked");
+
+    });
+
+    // Allows the ability to detect if the add button on the Add Customer form was clicked
+    $("#addCustomerAddButton").click(function () {
+
+        $(this).addClass("e-clicked");
+
+    });
+
+    // Bind to the submit event of the addCustomerForm form
+    $("#addCustomerForm").submit(function (event) {
+
+        // Abort any pending request
+        if (request) {
+
+            request.abort();
+
+        }
+
+        // setup some local variables
+        var $form = $(this);
+
+        // Let's select and cache all the fields
+        var $inputs = $form.find("input, select, button, textarea");
+
+        // Serialize the data in the form
+        var serializedData = $form.serialize();
+
+        // Let's disable the inputs for the duration of the Ajax request.
+        // Note: we disable elements AFTER the form data has been serialized.
+        // Disabled form elements will not be serialized.
+        $inputs.prop("disabled", true);
+
+        if ($(this).find(".e-clicked").attr("id") === "addCustomerAddButton") {
+
+            $("#addCustomerForm").trigger("reset"); // Resets Add Customer Form to its default state
+
+        }
+
+        // Fire off the POST request to writeConfig.php
+        request = $.ajax({
+
+            url: "addCustomer.php",
+            type: "POST",
+            data: serializedData
+
+        });
+
+        // Callback handler that will be called on success
+        request.done(function (response, textStatus, jqXhr) {
+
+            // Refresh the page
+            setTimeout(function () { window.location.reload(true); }, 5000);
+
+        });
+
+        // Callback handler that will be called on failure
+        request.fail(function (jqXhr, textStatus, errorThrown) {
+
+            // Log the error to the console
+            console.error(
+               "The following error occurred: " +
+                  textStatus, errorThrown
+            );
+
+        });
+
+        // Callback handler that will be called regardless
+        // if the request failed or succeeded
+        request.always(function () {
+
+            // Reenable the inputs
+            $inputs.prop("disabled", false);
+
+        });
+
+        // Prevent default posting of form
+        event.preventDefault();
+
+    });
    
     // Bind to the submit event of the adminCreationForm form
     $("#adminCreationForm").submit(function (event) {
@@ -272,72 +358,6 @@ $(document).ready(function() {
         $("#registerForm").submit();
 
     });
-
-    // Bind to the submit event of the adminCreationForm form
-    /*$("#searchForm").submit(function (event) {
-
-        // Abort any pending request
-        if (request) {
-
-            request.abort();
-
-        }
-
-        // setup some local variables
-        var $form = $(this);
-
-        // Let's select and cache all the fields
-        var $inputs = $form.find("input, select, button, textarea");
-
-        // Serialize the data in the form
-        var serializedData = $form.serialize();
-
-        // Let's disable the inputs for the duration of the Ajax request.
-        // Note: we disable elements AFTER the form data has been serialized.
-        // Disabled form elements will not be serialized.
-        $inputs.prop("disabled", true);
-
-        // Fire off the POST request to writeConfig.php
-        request = $.ajax({
-
-            url: "includes/findCustomer.php",
-            type: "GET",
-            data: serializedData
-
-        });
-
-        // Callback handler that will be called on success
-        request.done(function (response, textStatus, jqXhr) {
-
-            // Hide the Search Customer Form
-            $("#searchForm").hide();
-
-        });
-
-        // Callback handler that will be called on failure
-        request.fail(function (jqXhr, textStatus, errorThrown) {
-
-            // Log the error to the console
-            console.error(
-               "The following error occurred: " +
-                  textStatus, errorThrown
-            );
-
-        });
-
-        // Callback handler that will be called regardless
-        // if the request failed or succeeded
-        request.always(function () {
-
-            // Reenable the inputs
-            $inputs.prop("disabled", false);
-
-        });
-
-        // Prevent default posting of form
-        event.preventDefault();
-
-    });*/
 
     // Bind to the submit event of the writeDatabaseConfigurationForm form
     $("#writeDatabaseConfigurationForm").submit(function (event) {

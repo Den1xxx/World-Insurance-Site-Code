@@ -29,6 +29,7 @@
     <Compile Include="admin\index.php" />
     <Compile Include="admin\searchCustomer.php" />
     <Compile Include="config.php" />
+    <Compile Include="includes\addCustomerToDB.php" />
     <Compile Include="includes\findCustomer.php" />
     <Compile Include="includes\findUser.php" />
     <Compile Include="includes\addUser.php" />
