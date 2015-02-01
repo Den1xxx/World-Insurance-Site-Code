@@ -52,6 +52,7 @@
     <Folder Include="js\" />
     <Folder Include="admin\" />
     <Folder Include="account\" />
+    <Folder Include="uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\bootstrap-switch.min.css" />
@@ -79,5 +80,6 @@
     <Content Include="js\oldFunctions.js" />
     <Content Include="js\respond.min.js" />
     <Content Include="RadioSwitchCode-NotNeeded.txt" />
+    <Content Include="uploads\.htaccess" />
   </ItemGroup>
 </Project>
