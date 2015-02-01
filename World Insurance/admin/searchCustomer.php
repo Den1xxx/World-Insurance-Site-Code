@@ -83,6 +83,7 @@
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Zip</th>
+                                    <th>View Customer</th>
                                 </tr>
                             </thead>
                             <tbody id="searchResults" />
@@ -91,6 +92,8 @@
             </div>
             </div>
         </div>
+
+        <div id="modalOutput" />
 
         <footer class="footer">
             <div class="container">

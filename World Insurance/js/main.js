@@ -12,7 +12,41 @@ function searchCustomer() {
 
     var serializedData = $("#searchForm").serialize();
 
-    $("tbody#searchResults").load("../includes/findCustomer.php?", serializedData);
+    // Fire off the POST request to writeConfig.php
+    var req = $.ajax({
+
+        url: "../includes/findCustomer.php",
+        type: "GET",
+        data: serializedData
+
+    });
+
+    // Callback handler that will be called on success
+    req.done(function (response, textStatus, jqXhr) {
+
+        var returnStatus = $.evalJSON(response).returnStatus; // Grabs the return status from the returned JSON
+        var errorLog = $.evalJSON(response).errorLog; // Grabs the error log from the returned JSON
+
+        if (returnStatus === "Success") {
+
+            var returnObject = $.evalJSON(response).returnObject; // Grabs the return object from the returned JSON
+            var modalOutput = $.evalJSON(returnObject).modalOutput; // Grabs the modal output from the returned JSON
+            var tableOutput = $.evalJSON(returnObject).tableOutput; // Grabs the table output from the returned JSON
+
+            $("tbody#searchResults").empty().append(tableOutput);
+            $("div#modalOutput").empty().append(modalOutput);
+
+        }
+        else if (returnStatus === "No results") {
+            
+            $("tbody#searchResults").empty().append("");
+            $("div#modalOutput").empty().append("");
+
+        }
+
+        //$("tbody#searchResults").load("../includes/findCustomer.php?", serializedData);
+
+    });
 
 }
 
@@ -219,6 +253,12 @@ $(document).ready(function() {
 
         // Prevent default posting of form
         event.preventDefault();
+
+    });
+
+    $(document.body).on("click", "#addFileButton", function(event) {
+
+        // Some shiz here
 
     });
 
