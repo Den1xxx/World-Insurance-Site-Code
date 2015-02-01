@@ -34,24 +34,40 @@
 
     $customerAccountNumber  = $_GET[ 'inputSearchAccountNumber' ];
     $customerFirstName      = $_GET[ 'inputSearchFirstName' ];
+    $customerLastName       = $_GET[ 'inputSearchLastName' ];
+    $customerZip            = $_GET[ 'inputSearchZip' ];
     
-    if($customerAccountNumber == "" && $customerFirstName == "") {
+    if($customerAccountNumber == "" && $customerFirstName == "" && $customerLastName == "" && $customerZip == "") {
     
         die();
     
     }
-    else if($customerAccountNumber == "") {
+    else {
+        
+        if($customerAccountNumber == "") {
     
-        $customerAccountNumber = "999999999";
+            $customerAccountNumber = "999999999";
     
-    }
-    else if($customerFirstName == "") {
+        }
+        if($customerFirstName == "") {
     
-        $customerFirstName = "NULL";
+            $customerFirstName = "NULL";
     
+        }
+        if($customerLastName == "") {
+            
+            $customerLastName = "NULL";
+            
+        }
+        if($customerZip == "") {
+            
+            $customerZip = "NULL";
+            
+        }
+        
     }
 
-    $SQLQuery = "SELECT * FROM `cm`.`CM_Customers` WHERE (`accountNumber` LIKE '%$customerAccountNumber%' OR `customerFirstName` LIKE '%$customerFirstName%') ORDER BY `accountNumber` DESC;";
+    $SQLQuery = "SELECT * FROM `cm`.`CM_Customers` WHERE (`accountNumber` LIKE '%$customerAccountNumber%' OR `customerFirstName` LIKE '%$customerFirstName%' OR `customerLastName` LIKE '%$customerLastName%' OR `customerZip` LIKE '%$customerZip%') ORDER BY `accountNumber` DESC;";
     
     $result = $db->query($SQLQuery);
 
