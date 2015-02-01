@@ -62,12 +62,12 @@
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
               <h1 class="page-header">Search Customers</h1>
 
-                <form class="form-signin" id="searchForm">
+                <form class="form-signin" id="searchForm" onsubmit="return false;">
                     <h2 class="form-signin-heading" id="searchFormTitle">Search Criteria</h2>
                     <label for="inputSearchAccountNumber" class="sr-only">Account Number</label>
-                    <input type="email" id="inputSearchAccountNumber" name="inputSearchAccountNumber" onkeyup="searchCustomer(1)" class="form-control" placeholder="Account Number" autofocus />
+                    <input type="text" id="inputSearchAccountNumber" name="inputSearchAccountNumber" onkeyup="searchCustomer(1)" class="form-control" placeholder="Account Number" autocomplete="off" autofocus />
                     <label for="inputSearchFirstName" class="sr-only">First Name</label>
-                    <input type="text" id="inputSearchFirstName" name="inputSearchFirstName" onkeyup="searchCustomer(2)" class="form-control form-last" placeholder="First Name" />
+                    <input type="text" id="inputSearchFirstName" name="inputSearchFirstName" onkeyup="searchCustomer(2)" class="form-control form-last" placeholder="First Name" autocomplete="off" />
                 </form>
 
                 <h2 class="sub-header">Results</h2>

@@ -7,7 +7,15 @@
  * Version Date: 01/18/2015
  *
  */
- 
+
+function searchCustomer(typeOfSearch) {
+
+    var serializedData = $("#searchForm").serialize();
+
+    $("tbody#searchResults").load("../includes/findCustomer.php?", serializedData);
+
+}
+
 $(document).ready(function() {
    
     // Variable to hold current request
@@ -419,14 +427,6 @@ $(document).ready(function() {
       event.preventDefault();
       
     });
-
-    function searchCustomer(typeOfSearch) {
-
-        var serializedData = $("#searchform").serialize();
-
-        $("#searchResults").load("../includes/findCustomer.php", serializedData );
-
-    }
 
     var password = document.querySelector(" input[name=inputAdminUserPass]");
     var passwordConfirm = document.querySelector(" input[name=inputAdminUserRepeat]");
