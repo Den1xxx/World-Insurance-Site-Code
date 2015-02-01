@@ -52,6 +52,7 @@
     <Folder Include="js\" />
     <Folder Include="admin\" />
     <Folder Include="account\" />
+    <Folder Include="images\" />
     <Folder Include="uploads\" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +70,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="images\editIcon.png" />
     <Content Include="js\bootstrap-switch.min.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\html5shiv.min.js" />
