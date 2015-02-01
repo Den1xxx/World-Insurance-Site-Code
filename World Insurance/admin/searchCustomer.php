@@ -65,9 +65,13 @@
                 <form class="form-signin" id="searchForm" onsubmit="return false;">
                     <h2 class="form-signin-heading" id="searchFormTitle">Search Criteria</h2>
                     <label for="inputSearchAccountNumber" class="sr-only">Account Number</label>
-                    <input type="text" id="inputSearchAccountNumber" name="inputSearchAccountNumber" onkeyup="searchCustomer(1)" class="form-control" placeholder="Account Number" autocomplete="off" autofocus />
+                    <input type="text" id="inputSearchAccountNumber" name="inputSearchAccountNumber" onkeyup="searchCustomer()" class="form-control form-first" placeholder="Account Number" autocomplete="off" autofocus />
                     <label for="inputSearchFirstName" class="sr-only">First Name</label>
-                    <input type="text" id="inputSearchFirstName" name="inputSearchFirstName" onkeyup="searchCustomer(2)" class="form-control form-last" placeholder="First Name" autocomplete="off" />
+                    <input type="text" id="inputSearchFirstName" name="inputSearchFirstName" onkeyup="searchCustomer()" class="form-control form-middle" placeholder="First Name" autocomplete="off" />
+                    <label for="inputSearchLastName" class="sr-only">Last Name</label>
+                    <input type="text" id="inputSearchLastName" name="inputSearchLastName" onkeyup="searchCustomer()" class="form-control form-middle" placeholder="Last Name" autocomplete="off" />
+                    <label for="inputSearchZip" class="sr-only">Zip Code</label>
+                    <input type="text" id="inputSearchZip" name="inputSearchZip" onkeyup="searchCustomer()" class="form-control form-last" placeholder="Zip Code" autocomplete="off" />
                 </form>
 
                 <h2 class="sub-header">Results</h2>

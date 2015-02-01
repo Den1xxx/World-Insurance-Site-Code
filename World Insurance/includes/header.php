@@ -114,9 +114,9 @@
                             <form class=\"form-signin\" id=\"loginForm\">
                                 <h2 class=\"form-signin-heading\" id=\"loginFormTitle\">Please login</h2>
                                 <label for=\"inputLoginEmail\" class=\"sr-only\">Email</label>
-                                <input type=\"email\" id=\"inputLoginEmail\" name=\"inputLoginEmail\" class=\"form-control\" placeholder=\"Email\" required autofocus />
+                                <input type=\"email\" id=\"inputLoginEmail\" name=\"inputLoginEmail\" class=\"form-control form-first\" placeholder=\"Email\" required autofocus />
                                 <label for=\"inputLoginUserPass\" class=\"sr-only\">Password</label>
-                                <input type=\"password\" id=\"inputLoginUserPass\" name=\"inputLoginUserPass\" class=\"form-control\" placeholder=\"Password\" required />
+                                <input type=\"password\" id=\"inputLoginUserPass\" name=\"inputLoginUserPass\" class=\"form-control form-last\" placeholder=\"Password\" required />
                             </form>
                         </div>
                         <div class=\"modal-footer\">
@@ -141,13 +141,13 @@
                             <form class=\"form-signin\" id=\"registerForm\">
                                 <h2 class=\"form-signin-heading\" id=\"registerFormTitle\">Please register</h2>
                                 <label for=\"inputUserAccountNumber\" class=\"sr-only\">Account Number</label>
-                                <input type=\"text\" id=\"inputUserAccountNumber\" name=\"inputUserAccountNumber\" class=\"form-control\" placeholder=\"Account Number\" required />
+                                <input type=\"text\" id=\"inputUserAccountNumber\" name=\"inputUserAccountNumber\" class=\"form-control form-first\" placeholder=\"Account Number\" required autofocus />
                                 <label for=\"inputUserEmail\" class=\"sr-only\">Email</label>
-                                <input type=\"email\" id=\"inputUserEmail\" name=\"inputUserEmail\" class=\"form-control\" placeholder=\"Email\" required autofocus />
+                                <input type=\"email\" id=\"inputUserEmail\" name=\"inputUserEmail\" class=\"form-control form-middle\" placeholder=\"Email\" required />
                                 <label for=\"inputUserPass\" class=\"sr-only\">Password</label>
-                                <input type=\"password\" id=\"inputUserPass\" name=\"inputUserPass\" class=\"form-control\" placeholder=\"Password\" required />
+                                <input type=\"password\" id=\"inputUserPass\" name=\"inputUserPass\" class=\"form-control form-middle\" placeholder=\"Password\" required />
                                 <label for=\"inputUserPassRepeat\" class=\"sr-only\">Repeat Password</label>
-                                <input type=\"password\" id=\"inputUserPassRepeat\" name=\"inputUserPassRepeat\" class=\"form-control\" placeholder=\"Repeat Password\" required />
+                                <input type=\"password\" id=\"inputUserPassRepeat\" name=\"inputUserPassRepeat\" class=\"form-control form-last\" placeholder=\"Repeat Password\" required />
                             </form>
                         </div>
                         <div class=\"modal-footer\">

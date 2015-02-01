@@ -8,7 +8,7 @@
  *
  */
 
-function searchCustomer(typeOfSearch) {
+function searchCustomer() {
 
     var serializedData = $("#searchForm").serialize();
 
