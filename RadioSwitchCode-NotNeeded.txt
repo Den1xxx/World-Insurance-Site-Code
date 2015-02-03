@@ -1,0 +1,22 @@
+﻿//$("[name=\"loginRegisterSwitch\"]").bootstrapSwitch();
+
+   // Bind to the radio buttons in registration/login form and change "submit" button as needed
+   /*$("input[name=\"loginRegisterSwitch\"]").change(function () {
+      
+      var registerLoginValue = $(this).val();
+      if (registerLoginValue == "login") {
+         
+         document.getElementById("passwordInput2").style.display = "none";
+         document.getElementById("registerButton").style.display = "none";
+         document.getElementById("loginButton").style.display = "block";
+         
+      }
+      else if (registerLoginValue == "register") {
+         
+         document.getElementById("loginButton").style.display = "none";
+         document.getElementById("passwordInput2").style.display = "block";
+         document.getElementById("registerButton").style.display = "block";
+         
+      }
+        
+   } );*/
