@@ -32,32 +32,32 @@
         <!-- HTML5 Shiv 3.7.2 -->
         <!-- Respond 1.4.2 -->
         <!--[if lt IE 9]>
-            <script src="js/html5shiv.min.js"></script>
-            <script src="js/respond.min.js"></script>
+            <script src="../js/html5shiv.min.js"></script>
+            <script src="../js/respond.min.js"></script>
         <![endif]-->
 
         <?php
-        
+
         // Determine site content root
-        define('__ROOT__', dirname(dirname(__FILE__)));
-        
+        $webroot = dirname(dirname(__FILE__));
+
         ?>
     </head>
     <body>
         <?php
-            require_once(__ROOT__ . "/includes/header.php");
-        
+            require_once($webroot . "/includes/header.php");
+
             if( $_SESSION['isAdmin'] == FALSE ) {
-            
+
                 die ("You do not have the required access to see this page!");
-            
+
             }
         ?>
 
         <div class="container-fluid">
             <div class="row">
                 <?php
-                    require_once(__ROOT__ . "/includes/sidebar.php");
+                    require_once($webroot . "/includes/sidebar.php");
                 ?>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
               <h1 class="page-header">Add Customers</h1>

@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="css/jumbotron.css" />
 
         <!-- Form CSS -->
-        <link rel="stylesheet" href="../css/form.css" />
+        <link rel="stylesheet" href="css/form.css" />
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,13 +39,13 @@
         <?php
       
             // Determine site content root
-            define('__ROOT__', dirname(__FILE__));
+            $webroot = dirname(__FILE__);
       
         ?>
     </head>
     <body>
         <?php
-                require_once(__ROOT__ . "/includes/header.php");
+                require_once($webroot . "/includes/header.php");
         ?>
 
         <!-- Main jumbotron for a primary marketing message or call to action -->

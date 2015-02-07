@@ -5,10 +5,10 @@
 	session_start();
 
 	// Determine site content root
-	define('__ROOT__', dirname(dirname(__FILE__)));
+	$webroot = dirname(dirname(__FILE__));
 
-	require_once( __ROOT__ . "/config.php" );
-	require_once( __ROOT__ . "/includes/database.php" );
+	require_once( $webroot . "/config.php" );
+	require_once( $webroot . "/includes/database.php" );
 
 	// Sets up return array
 	$ret = array(
