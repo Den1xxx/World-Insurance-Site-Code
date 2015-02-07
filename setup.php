@@ -31,49 +31,50 @@
         <![endif]-->
 
         <?php
-        
+
             // Determine site content root
             define('__ROOT__', dirname(__FILE__));
-        
+
         ?>
     </head>
     <body>
         <?php
-        
+
           require_once( __ROOT__ . "/includes/header.php" );
-      
+
           $configExists = file_exists( __ROOT__ . "/config.php" );
           $rootAdminExists = FALSE;
 
           if ( $configExists ) {
-          
+
             require_once(__ROOT__ . "/config.php");
             require_once(__ROOT__ . "/includes/database.php");
-            
+
             $dbObject = new Database;
             $db = $dbObject->createDatabaseConnection();
-            
-            $SQLQuery = "SELECT * FROM `cm`.`CM_Users` WHERE userRecordID = 1;";
-            
+
+            $SQLQuery = "SELECT * FROM `" . DB_NAME . "`.`CM_Users`" .
+                "WHERE userRecordID = 1;";
+
             $result = $db->query($SQLQuery);
-            
+
             if ($result != FALSE) {
-                
+
                 $rootAdminExists = TRUE;
-                
+
             }
 
           }
-      
+
           // Initialize the variable that will hold all the HTML output
           $out = "<!-- Begin page content --><br /><br />
         <div class=\"container\">
             <div class=\"page-header\">
                 <h1>Database Configuration</h1>
             </div>";
-      
+
           if ( !$configExists ) {
-          
+
             $out .= "<div class=\"container\">
 
                 <form class=\"form-signin\" id=\"writeDatabaseConfigurationForm\">
@@ -88,12 +89,13 @@
                     <input type=\"text\" id=\"inputDatabaseHostname\" name=\"inputDatabaseHostname\" class=\"form-control\" placeholder=\"Database Hostname\" required>
                     <button id=\"databaseSubmitButton\" class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Submit</button>
                 </form>
+                <div id=\"returnOutput\" />
 
             </div> <!-- /container -->";
 
           }
           else if( !$db->connect_errno && !$rootAdminExists) {
-            
+
             $out .= "<form class=\"form-signin\" id=\"adminCreationForm\">
                         <h2 class=\"form-signin-heading\" id=\"adminCreationFormTitle\">Please create the admin account</h2>
                         <label for=\"inputUserEmail\" class=\"sr-only\">Email</label>
@@ -104,14 +106,14 @@
                         <input type=\"password\" id=\"inputUserPassRepeat\" name=\"inputUserPassRepeat\" class=\"form-control\" placeholder=\"Repeat Password\" required />
                         <button id=\"adminSubmitButton\" class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Submit</button>
                     </form>";
-          
+
           }
           else {
-          
+
              $out .= "<p class=\"lead\">All configuration is completed. This file may be removed.</p></div>";
-         
+
           }
-          
+
           $out .= "
             <!-- jQuery 1.11.2 -->
             <script src=\"js/jquery.min.js\"></script>
@@ -121,18 +123,18 @@
 
             <!-- Bootstrap JS 3.3.2 -->
             <script src=\"js/bootstrap.min.js\"></script>
-            
+
             <!-- Bootstrap Switch JS 3.3.1 -->
             <script src=\"js/bootstrap-switch.min.js\"></script>";
-          
+
           if ( $configExists ) {
-              
+
               $db->close();
-              
+
           }
-          
+
           echo "$out";
-      
+
        ?>
     </body>
 </html>
