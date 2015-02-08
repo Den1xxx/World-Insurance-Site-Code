@@ -50,21 +50,21 @@ function searchCustomer() {
 
 // Allow buttons on auto generated modal forms to be clickable, also passes the
 // form that the button belongs to as an argument
-function modalGenButton(modalFormName) {
+function modalGenButton(modalFormName, modalOutputName) {
 
-	modalGenSubmit(modalFormName);
+	modalGenSubmit(modalFormName, modalOutputName);
 
 }
 
 // Allow auto generated modal forms to be submittable
-function modalGenSubmit(modalFormName) {
+function modalGenSubmit(modalFormName, modalOutputName) {
 
 	var serializedData = $(modalFormName).serialize();
 
 	// Fire off the POST request to writeConfig.php
 	var req = $.ajax({
 
-		url: "../includes/findCustomer.php",
+		url: "../includes/updateCustomer.php",
 		type: "POST",
 		data: serializedData
 
@@ -82,9 +82,9 @@ function modalGenSubmit(modalFormName) {
 		if (returnStatus === "Success") {
 
 			// Grabs the return object from the returned JSON
-			var returnObject = $.evalJSON(response).returnObject;
+			var modalOutput = $.evalJSON(response).modalOutput;
 
-			$("div#modalOutput").empty().append(modalOutput);
+			$(modalOutputName).empty().append(modalOutput);
 
 		}
 		else if (returnStatus === "No results") {

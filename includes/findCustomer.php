@@ -138,10 +138,11 @@
 		$zip            = $row[4];
 
 		// Set up the current modals variables (pretty much their unique names)
-		$currentModalName                = "view" . "$count" . "CustomerModal";
+		$currentModalName                = "view" . $count . "CustomerModal";
 		$currentModalNameBtn             = "#" . $currentModalName;
+		$currentModalAlert               = $currentModalName . "Alert";
 		$currentModalNameForm            = $currentModalName . "Form";
-		$currentModalLabelName           = "$currentModalName" . "Label";
+		$currentModalLabelName           = $currentModalName . "Label";
 		$curentModalNameBtnAccountNumber = $currentModalNameBtn . "AccountNumber";
 
 		// Save all auto-generated modals for each returned customer
@@ -222,8 +223,8 @@
 			"				<button type=\"button\" class=\"btn btn-default\" " .
 								"data-dismiss=\"modal\">Close</button>" .
 			"				<button type=\"submit\" class=\"btn btn-primary\" " .
-								"onclick=\"modalGenButton($currentModalNameForm)\">" .
-								"Update</button>" .
+								"onclick=\"modalGenButton($currentModalNameForm, " .
+								"$currentModalAlert)\">Update</button>" .
 			"			</div>" .
 			"		</div>" .
 			"	</div>" .
