@@ -44,7 +44,7 @@
 
         <footer class="footer">
             <div class="container">
-                <p class="text-muted">&copy; World Insurance 2014 Site Created &amp; Managed by techsym</p>
+                <p class="text-muted footer-center">&copy; World Insurance 2014 Site Created &amp; Managed by techsym</p>
             </div>
         </footer>
 
