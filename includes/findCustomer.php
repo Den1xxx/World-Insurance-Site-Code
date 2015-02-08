@@ -17,60 +17,84 @@
 		'errorLog' => ""
 	);
 
+	// Creates a new Database object, and then establishes a connection to the
+	// Database
 	$dbObject = new Database;
 	$db = $dbObject->createDatabaseConnection();
 
 	// Checks the database connection
 	if ($db->connect_errno) {
 
+		// Logs the connection error
 		error_log( "Connection failed: " . $db->connect_error );
 
+		// Add the error to the return array
 		$ret["returnStatus"] = "Fail";
 		$ret["errorLog"] = "Connection failed: " . $db->connect_error;
 
+		// Return the array as a JSON object
 		echo json_encode($ret);
+
+		// Break out of the PHP script
+		die();
 
 	}
 
+	// Save the inputs to variables
 	$customerAccountNumber  = $_GET[ 'inputSearchAccountNumber' ];
 	$customerFirstName      = $_GET[ 'inputSearchFirstName' ];
 	$customerLastName       = $_GET[ 'inputSearchLastName' ];
 	$customerZip            = $_GET[ 'inputSearchZip' ];
 
+	// Sanitize all the input
+	$customerAccountNumber  = $db->real_escape_string($customerAccountNumber);
+	$customerFirstName      = $db->real_escape_string($customerFirstName);
+	$customerLastName       = $db->real_escape_string($customerLastName);
+	$customerZip            = $db->real_escape_string($customerZip);
+
+	// Checks if any input was received
 	if($customerAccountNumber == "" && $customerFirstName == ""
 		&& $customerLastName == "" && $customerZip == "") {
 
+		// No input received, set the return status to "No results"
 		$ret['returnStatus'] = "No results";
 
+		// Return the array as a JSON object
 		echo json_encode($ret);
+
+		// Break out of the PHP script
 		die();
 
 	}
-	else {
 
-		if($customerAccountNumber == "") {
+	// Checks if any of the input is empty, if so, set the input to a value that
+	// would not exist in the database
+	if($customerAccountNumber == "") {
 
-			$customerAccountNumber = "999999999";
+		$customerAccountNumber = "999999999";
 
-		}
-		if($customerFirstName == "") {
+	}
+	if($customerFirstName == "") {
 
-			$customerFirstName = "NULL";
+		$customerFirstName = "NULL";
 
-		}
-		if($customerLastName == "") {
+	}
+	if($customerLastName == "") {
 
-			$customerLastName = "NULL";
+		$customerLastName = "NULL";
 
-		}
-		if($customerZip == "") {
+	}
+	if($customerZip == "") {
 
-			$customerZip = "NULL";
-
-		}
+		$customerZip = "NULL";
 
 	}
 
+	// Build the SQL query that will be used to grab ALL relevant results from
+	// the received input.
+	//
+	// Note: Keep in mind that this is an OR, so any partial matches to any of
+	// the inputs will be grabbed from the database
 	$SQLQuery = "SELECT * FROM `" . DB_NAME . "`.`CM_Customers` " .
 		"WHERE (`accountNumber` LIKE " .
 		"'%$customerAccountNumber%' OR `customerFirstName` LIKE " .
@@ -78,36 +102,48 @@
 		"'%$customerLastName%' OR `customerZip` LIKE '%$customerZip%') " .
 		"ORDER BY `accountNumber` DESC;";
 
+	// Execute the query on the database object
 	$result = $db->query($SQLQuery);
 
+	// Checks to see if any customers were found (there should be at least one
+	// row returned if a customer was found)
 	if ($result->num_rows == 0) {
 
+		// No customers found, set the return status to "No results"
 		$ret['returnStatus'] = "No results";
 
+		// Return the array as a JSON object
 		echo json_encode($ret);
+
+		// Break out of the PHP script
 		die();
 
 	}
 
+	// Sets up some variables for the returned customers
 	$count = 0;
 	$modal = "";
 	$table = "";
 
+	// Iterate through all returned customers
 	while($row = $result->fetch_row()) {
 
+		// Increments the count, this helps with the auto-generated modals and
+		// distinguishing their names with this count
 		$count++;
-		$innerModalFieldEditCount = 4;
 
 		$accountNumber  = $row[1];
 		$firstName      = $row[2];
 		$lastName       = $row[3];
 		$zip            = $row[4];
 
+		// Set up the current modals variables (pretty much their unique names)
 		$currentModalName = "view" . "$count" . "CustomerModal";
 		$currentModalNameBtn = "#" . $currentModalName;
 		$currentModalLabelName = "$currentModalName" . "Label";
 		$curentModalNameBtnAccountNumber = $currentModalNameBtn . "AccountNumber";
 
+		// Save all auto-generated modals for each returned customer
 		$modal .=
 			"<!-- $currentModalName Modal -->" .
 			"<div class=\"modal fade\" id=\"$currentModalName\" tabindex=\"-1\" " .
@@ -150,7 +186,7 @@
 			"						</div>" .
 			"					</div>" .
 			"					<div class=\"form-group form-inline\">" .
-			"						<div class=\"input-group col-xs-3\">" .
+			"						<div class=\"input-group col-xs-2\">" .
 			"							<label for=\"inputGenModalAccountNumber\">" .
 											"Account Number</label>" .
 			"							<input type=\"text\" " .
@@ -163,7 +199,7 @@
 			"						</div>" .
 			"					</div>" .
 			"					<div class=\"form-group form-inline\">" .
-			"						<div class=\"input-group col-xs-2\">" .
+			"						<div class=\"input-group col-xs-1\">" .
 			"							<label for=\"inputGenModalZip\">Zip</label>" .
 			"							<input type=\"text\" id=\"inputGenModalZip\" " .
 											"name=\"inputGenModalZip\" " .
@@ -184,6 +220,7 @@
 			"	</div>" .
 			"</div>";
 
+		// Save all the auto-generated table rows for each returned customer
 		$table .=
 			"<tr>" .
 			"   <td>$accountNumber</td>" .
@@ -197,14 +234,17 @@
 
 	}
 
+	// Set the generated modal and table strings to the return object
 	$returnObject = array(
 		'modalOutput' => $modal,
 		'tableOutput' => $table
 	);
 
+	// JSON encode the return object, and set the return status to "Success"
 	$ret['returnObject'] = json_encode($returnObject);
 	$ret['returnStatus'] = "Success";
 
+	// Return the array as a JSON object
 	echo json_encode($ret);
 
 	// Close the returned result
