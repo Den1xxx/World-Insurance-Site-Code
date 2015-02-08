@@ -70,11 +70,12 @@
 
 	}
 
-	$SQLQuery = "SELECT * FROM `cm`.`CM_Customers` WHERE (`accountNumber` LIKE" .
-		" '%$customerAccountNumber%' OR `customerFirstName` LIKE" .
-		" '%$customerFirstName%' OR `customerLastName` LIKE" .
-		" '%$customerLastName%' OR `customerZip` LIKE '%$customerZip%')" .
-		" ORDER BY `accountNumber` DESC;";
+	$SQLQuery = "SELECT * FROM `" . DB_NAME . "`.`CM_Customers` " .
+		"WHERE (`accountNumber` LIKE " .
+		"'%$customerAccountNumber%' OR `customerFirstName` LIKE " .
+		"'%$customerFirstName%' OR `customerLastName` LIKE " .
+		"'%$customerLastName%' OR `customerZip` LIKE '%$customerZip%') " .
+		"ORDER BY `accountNumber` DESC;";
 
 	$result = $db->query($SQLQuery);
 
