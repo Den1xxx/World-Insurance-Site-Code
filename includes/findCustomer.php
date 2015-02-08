@@ -41,16 +41,16 @@
 	}
 
 	// Save the inputs to variables
-	$customerAccountNumber  = $_GET[ 'inputSearchAccountNumber' ];
-	$customerFirstName      = $_GET[ 'inputSearchFirstName' ];
-	$customerLastName       = $_GET[ 'inputSearchLastName' ];
-	$customerZip            = $_GET[ 'inputSearchZip' ];
+	$customerAccountNumber = $_GET[ 'inputSearchAccountNumber' ];
+	$customerFirstName     = $_GET[ 'inputSearchFirstName' ];
+	$customerLastName      = $_GET[ 'inputSearchLastName' ];
+	$customerZip           = $_GET[ 'inputSearchZip' ];
 
 	// Sanitize all the input
-	$customerAccountNumber  = $db->real_escape_string($customerAccountNumber);
-	$customerFirstName      = $db->real_escape_string($customerFirstName);
-	$customerLastName       = $db->real_escape_string($customerLastName);
-	$customerZip            = $db->real_escape_string($customerZip);
+	$customerAccountNumber = $db->real_escape_string($customerAccountNumber);
+	$customerFirstName     = $db->real_escape_string($customerFirstName);
+	$customerLastName      = $db->real_escape_string($customerLastName);
+	$customerZip           = $db->real_escape_string($customerZip);
 
 	// Checks if any input was received
 	if($customerAccountNumber == "" && $customerFirstName == ""
@@ -132,10 +132,10 @@
 		// distinguishing their names with this count
 		$count++;
 
-		$accountNumber  = $row[1];
-		$firstName      = $row[2];
-		$lastName       = $row[3];
-		$zip            = $row[4];
+		$accountNumber = $row[1];
+		$firstName     = $row[2];
+		$lastName      = $row[3];
+		$zip           = $row[4];
 
 		// Set up the current modals variables (pretty much their unique names)
 		$currentModalName                = "view" . $count . "CustomerModal";
@@ -162,13 +162,8 @@
 								"$firstName $lastName's Policy Info</h4>" .
 			"			</div>" .
 			"			<div class=\"modal-body\">" .
-			"			<div class=\"alert alert-dismissible\" " .
-							"role=\"alert\">" .
-			"				<button type=\"button\" class=\"close\" " .
-								"data-dismiss=\"alert\" aria-label=\"Close\"><span " .
-								"aria-hidden=\"true\">&times;</span></button>" .
-			"				<div /> " .
-			"</div>" .
+			"				<div id=\"$currentModalAlert\" class=\"hidden\" " .
+								"role=\"alert\" />" .
 			"				<form class=\"form-left\" id=\"$currentModalNameForm\"" .
 								" onsubmit=\"modalGenSubmit()\">" .
 			"					<div class=\"form-group form-inline\">" .
@@ -222,7 +217,7 @@
 			"			<div class=\"modal-footer\">" .
 			"				<button type=\"button\" class=\"btn btn-default\" " .
 								"data-dismiss=\"modal\">Close</button>" .
-			"				<button type=\"submit\" class=\"btn btn-primary\" " .
+			"				<button type=\"button\" class=\"btn btn-primary\" " .
 								"onclick=\"modalGenButton($currentModalNameForm, " .
 								"$currentModalAlert)\">Update</button>" .
 			"			</div>" .

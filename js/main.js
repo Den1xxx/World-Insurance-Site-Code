@@ -61,7 +61,7 @@ function modalGenSubmit(modalFormName, modalOutputName) {
 
 	var serializedData = $(modalFormName).serialize();
 
-	// Fire off the POST request to writeConfig.php
+	// Fire off the POST request to updateCustomer.php
 	var req = $.ajax({
 
 		url: "../includes/updateCustomer.php",
@@ -79,18 +79,33 @@ function modalGenSubmit(modalFormName, modalOutputName) {
 		// Grabs the error log from the returned JSON
 		var errorLog = $.evalJSON(response).errorLog;
 
-		if (returnStatus === "Success") {
+		if (returnStatus === "Customer Updated") {
 
-			// Grabs the return object from the returned JSON
-			var modalOutput = $.evalJSON(response).modalOutput;
-
-			$(modalOutputName).empty().append(modalOutput);
+			$(modalOutputName).removeClass().addClass( "alert alert-success" );
+			$(modalOutputName).empty().append( "<strong>Successfully Updated "
+				+ "Customer</strong>: The customer was successfully updated!" );
 
 		}
-		else if (returnStatus === "No results") {
+		else if (returnStatus === "Customer Not Updated") {
 
-			$("tbody#searchResults").empty().append("");
-			$("div#modalOutput").empty().append("");
+			$(modalOutputName).removeClass().addClass( "alert alert-info" );
+			$(modalOutputName).empty().append( "<strong>Customer Not Updated "
+				+ "</strong>: The customer was not updated since none of their "
+				+ "information for this customer was changed!" );
+
+		}
+		else if (returnStatus === "Connection Failed") {
+
+			$(modalOutputName).removeClass().addClass( "alert alert-danger" );
+			$(modalOutputName).empty().append( "<strong>Database Connection Failed"
+				+ "</strong>: Unable to establish a connection to the database" );
+
+		}
+		else {
+
+			$(modalOutputName).removeClass().addClass( "alert alert-danger" );
+			$(modalOutputName).empty().append( "<strong>Unknown Error</strong>: "
+				+ "An unknown error occurred!" );
 
 		}
 
