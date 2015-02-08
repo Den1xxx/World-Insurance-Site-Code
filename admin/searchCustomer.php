@@ -83,7 +83,7 @@
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Zip</th>
-                                    <th>View Customer</th>
+                                    <th>Customer Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="searchResults" />
