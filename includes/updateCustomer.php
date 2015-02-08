@@ -63,12 +63,12 @@
 			"= '$customerAccountNumber';";
 
 	// Execute the query on the database object
-	$result = $db->query($SQLQuery);
+	$db->query($SQLQuery);
 
 	// Checks to see if the customer was updated
-	if ($result->num_rows == 0) {
+	if ($db->affected_rows == 0) {
 
-		// No customers updated, set the return status to "No results"
+		// No customers updated, set the return status to "Customer Not Updated"
 		$ret['returnStatus'] = "Customer Not Updated";
 
 		// Return the array as a JSON object
@@ -84,9 +84,6 @@
 
 	// Return the array as a JSON object
 	echo json_encode($ret);
-
-	// Close the returned result
-	$result->close();
 
 	// Close the database connection
 	$db->close();
