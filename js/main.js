@@ -73,6 +73,13 @@ function modalGenSubmit(modalFormName, modalOutputName) {
 
 }
 
+// Allow auto generated search result rows to be deletable
+function searchCustomerDelButton(accountNumber) {
+
+
+
+}
+
 function searchCustomer() {
 
 	var serializedData = $("#searchForm").serialize();
