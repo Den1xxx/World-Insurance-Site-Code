@@ -108,16 +108,15 @@ function searchCustomerDelButton(accountNumber) {
 		if (returnStatus === "Customer Deleted") {
 
 			$("#resultsOutput").removeClass().addClass( "alert alert-success" );
-			$("#resultsOutput").empty().append( "<strong>Successfully Updated "
-				+ "Customer</strong>: The customer was successfully updated!" );
+			$("#resultsOutput").empty().append( "<strong>Successfully Deleted "
+				+ "Customer</strong>: The customer was successfully deleted!" );
 
 		}
 		else if (returnStatus === "Customer Not Deleted") {
 
 			$("#resultsOutput").removeClass().addClass( "alert alert-info" );
-			$("#resultsOutput").empty().append( "<strong>Customer Not Updated "
-				+ "</strong>: The customer was not updated since none of their "
-				+ "information for this customer was changed!" );
+			$("#resultsOutput").empty().append( "<strong>Customer Not Deleted "
+				+ "</strong>: The customer was not deleted!" );
 
 		}
 		else if (returnStatus === "Connection Failed") {
@@ -135,6 +134,8 @@ function searchCustomerDelButton(accountNumber) {
 				+ "An unknown error occurred!" );
 
 		}
+
+		searchCustomer();
 
 	});
 

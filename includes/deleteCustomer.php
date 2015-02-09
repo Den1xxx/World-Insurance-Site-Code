@@ -44,7 +44,7 @@
 
 	// Build the SQL query that will be used to delete the customer in the
 	// database
-	$SQLQuery = "DELETE `" . DB_NAME . "`.`CM_Customers` " .
+	$SQLQuery = "DELETE FROM `" . DB_NAME . "`.`CM_Customers` " .
 		"WHERE `" . DB_NAME . "`.`CM_Customers`.`accountNumber` " .
 			"= '$customerAccountNumber';";
 
