@@ -235,7 +235,10 @@
 			"   <td>$zip</td>" .
 			"   <td><button type=\"button\" class=\"btn btn-xs btn-info\" " .
 					"data-toggle=\"modal\" data-target=\"$currentModalNameBtn\">" .
-					"View</button></td>" .
+					"View</button>&nbsp;&nbsp;<button type=\"button\" class=\"btn " .
+					"btn-xs btn-danger\" " .
+					"onclick=\"searchCustomerDelButton($accountNumber)\">Delete" .
+					"</button></td>" .
 			"</tr>";
 
 	}
