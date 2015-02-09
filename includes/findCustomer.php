@@ -212,6 +212,15 @@
 											"value=\"$zip\" autocomplete=\"off\" />" .
 			"						</div>" .
 			"					</div>" .
+			"					<div class=\"form-group form-inline\">" .
+			"						<div class=\"input-group col-xs-3\">" .
+			"							<label for=\"inputGenModalFile\">Upload Policy " .
+											"PDF</label>" .
+			"							<input type=\"file\" id=\"inputGenModalFile\">" .
+			"							<p class=\"help-block\">Please upload a PDF for" .
+											" the policy period chosen above!</p>" .
+			"						</div>" .
+			"					</div>" .
 			"				</form>" .
 			"			</div>" .
 			"			<div class=\"modal-footer\">" .
