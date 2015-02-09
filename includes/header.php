@@ -2,10 +2,10 @@
 
     // Determine site content root
     define('__ROOT__', dirname(__FILE__));
-    
+
    $currentPage = $_SERVER['REQUEST_URI'];
    $out = "";
-   
+
    $out .= "<nav class=\"navbar navbar-default navbar-fixed-top\">
                 <div class=\"container-fluid\">
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -42,40 +42,40 @@
                             </li>
                         </ul>
                         <ul class=\"nav navbar-nav navbar-right\">";
-                        
+
     // Only displays the admin link in the navbar if an admin is logged in
     if( $_SESSION['isAdmin'] == TRUE ) {
-                        
-        if( $currentPage == "/admin" || $currentPage == "/admin/searchCustomer.php" || $currentPage == "/admin/addCustomer.php" ) {
-        
+
+        if( $currentPage == "/admin" || $currentPage == "/admin/" || $currentPage == "/admin/searchCustomer.php" || $currentPage == "/admin/addCustomer.php" ) {
+
             $out .= "<li class=\"active\">";
-            
-        
+
+
         }
         else {
-        
+
             $out .= "<li>";
-        
+
         }
-        
+
         $out .= "<a href=\"../admin\">Admin</a>
         </li>";
-                        
+
     }
-                            
+
     if( isset($_SESSION['userEmail']) ) {
 
         if( $currentPage == "/account" || $currentPage == "/account/policies.php" ) {
-        
+
             $out .= "<li class=\"active dropdown\">";
-        
+
         }
         else {
-        
+
             $out .= "<li class=\"dropdown\">";
-        
+
         }
-        
+
         $out .= "<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\"
             aria-expanded=\"false\">
             Account <span class=\"caret\"></span>
@@ -93,10 +93,10 @@
             </li>
         </ul>
     </li>";
-                            
+
     }
     else {
-                            
+
         $out .= "<a type=\"button\" class=\"btn btn-primary navbar-btn\" data-toggle=\"modal\" data-target=\"#loginModal\">Login</a>
         <a type=\"button\" class=\"btn btn-primary navbar-btn\" data-toggle=\"modal\" data-target=\"#registerModal\">Register</a>
         <!-- Login Modal -->
@@ -159,9 +159,9 @@
             </div>
         </div>
         <!-- /container -->";
-                            
+
     }
-                            
+
     $out .= "
 </ul>
 </div>
@@ -169,6 +169,6 @@
 </div>
 <!-- /.container-fluid -->
 </nav>";
-            
+
     echo "$out";
 ?>
