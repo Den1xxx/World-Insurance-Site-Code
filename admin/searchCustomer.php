@@ -37,20 +37,20 @@
         <![endif]-->
 
         <?php
-        
+
         // Determine site content root
         $webroot = dirname(dirname(__FILE__));
-        
+
         ?>
     </head>
     <body>
         <?php
         require_once($webroot . "/includes/header.php");
-        
+
         if( $_SESSION['isAdmin'] == FALSE ) {
-            
+
             die ("You do not have the required access to see this page!");
-            
+
         }
         ?>
 
@@ -73,6 +73,8 @@
                     <label for="inputSearchZip" class="sr-only">Zip Code</label>
                     <input type="text" id="inputSearchZip" name="inputSearchZip" onkeyup="searchCustomer()" class="form-control form-last" placeholder="Zip Code" autocomplete="off" />
                 </form>
+
+                <div id="resultsOutput" class="hidden" role="alert" />
 
                 <h2 class="sub-header">Results</h2>
                     <div class="table-responsive">

@@ -37,35 +37,25 @@
 	}
 
 	// Save the inputs to variables
-	$customerAccountNumber = $_POST[ 'inputGenModalAccountNumber' ];
-	$customerFirstName     = $_POST[ 'inputGenModalFirstName' ];
-	$customerLastName      = $_POST[ 'inputGenModalLastName' ];
-	$customerZip           = $_POST[ 'inputGenModalZip' ];
+	$customerAccountNumber = $_GET[ 'inputAccountNumber' ];
 
 	// Sanitize all the input
 	$customerAccountNumber = $db->real_escape_string($customerAccountNumber);
-	$customerFirstName     = $db->real_escape_string($customerFirstName);
-	$customerLastName      = $db->real_escape_string($customerLastName);
-	$customerZip           = $db->real_escape_string($customerZip);
 
-	// Build the SQL query that will be used to update the customer in the
+	// Build the SQL query that will be used to delete the customer in the
 	// database
-	$SQLQuery = "UPDATE `" . DB_NAME . "`.`CM_Customers` " .
-		"SET `accountNumber` = '$customerAccountNumber', " .
-		"`customerFirstName` = '$customerFirstName', " .
-		"`customerLastName` = '$customerLastName', " .
-		"`customerZip` = '$customerZip' " .
+	$SQLQuery = "DELETE `" . DB_NAME . "`.`CM_Customers` " .
 		"WHERE `" . DB_NAME . "`.`CM_Customers`.`accountNumber` " .
 			"= '$customerAccountNumber';";
 
 	// Execute the query on the database object
 	$db->query($SQLQuery);
 
-	// Checks to see if the customer was updated
+	// Checks to see if the customer was deleted
 	if ($db->affected_rows == 0) {
 
-		// No customers updated, set the return status to "Customer Not Updated"
-		$ret['returnStatus'] = "Customer Not Updated";
+		// Customer not deleted, set the return status to "Customer Not Deleted"
+		$ret['returnStatus'] = "Customer Not Deleted";
 
 		// Return the array as a JSON object
 		echo json_encode($ret);
@@ -75,8 +65,8 @@
 
 	}
 
-	// Customer was updated successfully
-	$ret['returnStatus'] = "Customer Updated";
+	// Customer was deleted successfully
+	$ret['returnStatus'] = "Customer Deleted";
 
 	// Return the array as a JSON object
 	echo json_encode($ret);

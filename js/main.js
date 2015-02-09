@@ -76,7 +76,67 @@ function modalGenSubmit(modalFormName, modalOutputName) {
 // Allow auto generated search result rows to be deletable
 function searchCustomerDelButton(accountNumber) {
 
+	var serializedData = "inputAccountNumber=" + accountNumber;
 
+	var confirmValue = confirm( "Are you sure you want to delete this "
+		+ "customer?" );
+
+	if ( confirmValue === false ) {
+
+		return;
+
+	}
+
+	// Fire off the GET request to deleteCustomer.php
+	var req = $.ajax({
+
+		url: "../includes/deleteCustomer.php",
+		type: "GET",
+		data: serializedData
+
+	});
+
+	// Callback handler that will be called on success
+	req.done(function (response) {
+
+		// Grabs the return status from the returned JSON
+		var returnStatus = $.evalJSON(response).returnStatus;
+
+		// Grabs the error log from the returned JSON
+		var errorLog = $.evalJSON(response).errorLog;
+
+		if (returnStatus === "Customer Deleted") {
+
+			$("#resultsOutput").removeClass().addClass( "alert alert-success" );
+			$("#resultsOutput").empty().append( "<strong>Successfully Updated "
+				+ "Customer</strong>: The customer was successfully updated!" );
+
+		}
+		else if (returnStatus === "Customer Not Deleted") {
+
+			$("#resultsOutput").removeClass().addClass( "alert alert-info" );
+			$("#resultsOutput").empty().append( "<strong>Customer Not Updated "
+				+ "</strong>: The customer was not updated since none of their "
+				+ "information for this customer was changed!" );
+
+		}
+		else if (returnStatus === "Connection Failed") {
+
+			$("#resultsOutput").removeClass().addClass( "alert alert-danger" );
+			$("#resultsOutput").empty().append( "<strong>Database Connection "
+				+ "Failed</strong>: Unable to establish a connection to the "
+				+ "database" );
+
+		}
+		else {
+
+			$("#resultsOutput").removeClass().addClass( "alert alert-danger" );
+			$("#resultsOutput").empty().append( "<strong>Unknown Error</strong>: "
+				+ "An unknown error occurred!" );
+
+		}
+
+	});
 
 }
 
