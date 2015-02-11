@@ -38,7 +38,7 @@
 	$preppedLoginUserEmail = $db->real_escape_string($loginUserEmail);
 	$preppedLoginUserPass  = $db->real_escape_string($loginUserPass);
 
-	$SQLQuery = "SELECT * FROM `" . DB_NAME . "`.`CM_Users`" .
+	$SQLQuery = "SELECT * FROM `" . DB_NAME . "`.`" . TBL_USER . "`" .
 		"WHERE `userEmail` = '$preppedLoginUserEmail';";
 
 	$result = $db->query($SQLQuery);
@@ -70,7 +70,7 @@
 
 			$accountNumber = "$row[4]";
 
-			$SQLQuery = "SELECT * FROM `" . DB_NAME . "`.`CM_Customers`" .
+			$SQLQuery = "SELECT * FROM `" . DB_NAME . "`.`" . TBL_CUSTOMER . "`" .
 				"WHERE `accountNumber` = '$accountNumber';";
 
 			$result = $db->query($SQLQuery);

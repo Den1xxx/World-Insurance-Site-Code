@@ -95,7 +95,7 @@
 	//
 	// Note: Keep in mind that this is an OR, so any partial matches to any of
 	// the inputs will be grabbed from the database
-	$SQLQuery = "SELECT * FROM `" . DB_NAME . "`.`CM_Customers` " .
+	$SQLQuery = "SELECT * FROM `" . DB_NAME . "`.`" . TBL_CUSTOMER . "` " .
 		"WHERE (`accountNumber` LIKE " .
 		"'%$customerAccountNumber%' OR `customerFirstName` LIKE " .
 		"'%$customerFirstName%' OR `customerLastName` LIKE " .

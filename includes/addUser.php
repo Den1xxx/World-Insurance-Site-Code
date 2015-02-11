@@ -39,7 +39,7 @@
 	$preppedNewUserAccountNumber = $db->real_escape_string($newUserAccountNumber);
 	$preppedNewIsAdmin           = $db->real_escape_string($newIsAdmin);
 
-	$SQLQuery = "INSERT INTO `" . DB_NAME . "`.`CM_Users` (" .
+	$SQLQuery = "INSERT INTO `" . DB_NAME . "`.`" . TBL_USER . "` (" .
 		"`userRecordID`," .
 		"`isAdmin`," .
 		"`userEmail`," .

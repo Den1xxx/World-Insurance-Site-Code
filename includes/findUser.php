@@ -28,7 +28,7 @@
 	$preppedFindUserPass          = $db->real_escape_string($findUserPass);
 	$preppedFindUserAccountNumber = $db->real_escape_string($findUserAccountNumber);
 
-	$SQLQuery = "SELECT * FROM `" . DB_NAME . "`.`CM_Users` " .
+	$SQLQuery = "SELECT * FROM `" . DB_NAME . "`.`" . TBL_USER . "` " .
 		"WHERE userRecordID = $preppedFindUserRecordID;";
 
 	if ( $result = $db->query($SQLQuery) === FALSE ) {

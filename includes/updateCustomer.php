@@ -50,12 +50,12 @@
 
 	// Build the SQL query that will be used to update the customer in the
 	// database
-	$SQLQuery = "UPDATE `" . DB_NAME . "`.`CM_Customers` " .
+	$SQLQuery = "UPDATE `" . DB_NAME . "`.`" . TBL_CUSTOMER . "` " .
 		"SET `accountNumber` = '$customerAccountNumber', " .
 		"`customerFirstName` = '$customerFirstName', " .
 		"`customerLastName` = '$customerLastName', " .
 		"`customerZip` = '$customerZip' " .
-		"WHERE `" . DB_NAME . "`.`CM_Customers`.`accountNumber` " .
+		"WHERE `" . DB_NAME . "`.`" . TBL_CUSTOMER . "`.`accountNumber` " .
 			"= '$customerAccountNumber';";
 
 	// Execute the query on the database object

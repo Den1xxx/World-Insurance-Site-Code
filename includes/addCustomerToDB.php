@@ -46,7 +46,7 @@
 		$preppedNewCustomerPolicyPDFs
 			= $db->real_escape_string($newCustomerPolicyPDFs);
 
-		$SQLQuery = "SELECT * FROM `" . DB_NAME . "`.`CM_Customers` " .
+		$SQLQuery = "SELECT * FROM `" . DB_NAME . "`.`" . TBL_CUSTOMER . "` " .
 			"WHERE accountNumber = '$preppedNewCustomerAccountNumber';";
 
 		$result = $db->query($SQLQuery);
@@ -65,7 +65,7 @@
 		}
 		else {
 
-			$SQLQuery = "INSERT INTO `" . DB_NAME . "`.`CM_Customers` ( " .
+			$SQLQuery = "INSERT INTO `" . DB_NAME . "`.`" . TBL_CUSTOMER . "` ( " .
 				"`customerRecordID`, " .
 				"`accountNumber`, " .
 				"`customerFirstName`, " .
