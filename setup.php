@@ -15,11 +15,14 @@
 		<!-- Bootstrap CSS 3.3.2 -->
 		<link href="css/bootstrap.min.css" rel="stylesheet" />
 
-		<!-- Bootstrap Switch CSS 3.3.1 -->
-		<link href="css/bootstrap-switch.min.css" rel="stylesheet" />
-
 		<!-- Bootstrap Theme CSS 3.3.2 -->
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+
+		<!-- Sticky Footer CSS -->
+		<link rel="stylesheet" href="css/sticky-footer.css" />
+
+		<!-- Form CSS -->
+		<link rel="stylesheet" href="css/form.css" />
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -56,9 +59,9 @@
 			$SQLQuery = "SELECT * FROM `" . DB_NAME . "`.`" . TBL_USER . "`" .
 				"WHERE userRecordID = 1;";
 
-			$result = $db->query($SQLQuery);
+			$db->query($SQLQuery);
 
-			if ($result != FALSE) {
+			if ($db->affected_rows != 0) {
 
 				$rootAdminExists = TRUE;
 
@@ -118,6 +121,9 @@
 			<!-- jQuery 1.11.2 -->
 			<script src=\"js/jquery.min.js\"></script>
 
+			<!-- jQuery JSON 2.5.1 -->
+			<script src=\"js/jquery.json.min.js\" />
+
 			<!-- Main JS 0.0.1 -->
 			<script src=\"js/main.js\"></script>
 
@@ -125,7 +131,10 @@
 			<script src=\"js/bootstrap.min.js\"></script>
 
 			<!-- Bootstrap Switch JS 3.3.1 -->
-			<script src=\"js/bootstrap-switch.min.js\"></script>";
+			<script src=\"js/bootstrap-switch.min.js\"></script>
+
+			<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+			<script src=\"js/ie10-viewport-bug-workaround.js\"></script>";
 
 		  if ( $configExists ) {
 

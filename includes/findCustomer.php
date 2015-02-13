@@ -216,7 +216,8 @@
 			"						<div class=\"input-group col-xs-3\">" .
 			"							<label for=\"inputGenModalFile\">Upload Policy " .
 											"PDF</label>" .
-			"							<input type=\"file\" id=\"inputGenModalFile\">" .
+			"							<input type=\"file\" id=\"inputGenModalFile\" " .
+											"name=\"inputGenModalFile\" size=\"20\" />" .
 			"							<p class=\"help-block\">Please upload a PDF for" .
 											" the policy period chosen above!</p>" .
 			"						</div>" .
