@@ -48,6 +48,51 @@
 	$customerLastName      = $db->real_escape_string($customerLastName);
 	$customerZip           = $db->real_escape_string($customerZip);
 
+	// Checks to see if the user uploaded a PDF
+	if($_FILES[ 'inputGenModalFile' ][ 'name' ]) {
+
+		if(!$_FILES[ 'inputGenModalFile' ][ 'error' ]) {
+
+			// Generate a new file name for this policy PDF
+			// The name format is MMDDYYYY
+			// The name format is always the policy start date
+			$policyPDFName = "01012015";
+
+			// Checks to make sure the PDF is larger than 20MBs
+			if($_FILES[ 'inputGenModalFile' ][ 'size' ] > 20971520) {
+
+				$isFileValid = false;
+
+				// Add the error to the return array
+				$ret["returnStatus"] = "You uploaded a PDF that is too large";
+
+			}
+			else {
+
+				$isFileValid = true;
+
+			}
+
+			if($isFileValid) {
+
+				mkdir("../uploads/$customerAccountNumber", 0775);
+				move_uploaded_file($_FILES[ 'inputGenModalFile' ][ 'name' ],
+					"../uploads/$customerAccountNumber/$policyPDFName");
+
+			}
+
+		}
+		else {
+
+			// Add the error to the return array
+			$ret["returnStatus"] = "Upload Failed";
+			$ret["errorLog"] = "Your upload failed with the following error: " .
+				$_FILES[ 'inputGenModalFile' ][ 'error' ];
+
+		}
+
+	}
+
 	// Build the SQL query that will be used to update the customer in the
 	// database
 	$SQLQuery = "UPDATE `" . DB_NAME . "`.`" . TBL_CUSTOMER . "` " .
