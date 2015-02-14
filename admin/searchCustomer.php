@@ -45,13 +45,13 @@
 	</head>
 	<body>
 		<?php
-		require_once($webroot . "/includes/header.php");
+			require_once($webroot . "/includes/header.php");
 
-		if( $_SESSION['isAdmin'] == FALSE ) {
+			if( $_SESSION['isAdmin'] == FALSE ) {
 
-			die ("You do not have the required access to see this page!");
+				die ("You do not have the required access to see this page!");
 
-		}
+			}
 		?>
 
 		<div class="container-fluid">

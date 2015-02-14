@@ -10,6 +10,7 @@
 	$ret = array(
 		'returnObject' => "",
 		'returnStatus' => "",
+		'fileUploaded' => false,
 		'errorLog' => ""
 	);
 
@@ -56,7 +57,7 @@
 			// Generate a new file name for this policy PDF
 			// The name format is MMDDYYYY
 			// The name format is always the policy start date
-			$policyPDFName = "01012015";
+			$policyPDFName = "01012015" . ".pdf";
 
 			// Checks to make sure the PDF is larger than 20MBs
 			if($_FILES[ 'inputGenModalFile' ][ 'size' ] > 20971520) {
@@ -75,9 +76,19 @@
 
 			if($isFileValid) {
 
-				mkdir("../uploads/$customerAccountNumber", 0775);
-				move_uploaded_file($_FILES[ 'inputGenModalFile' ][ 'name' ],
+				// Checks to see if the target directory exists
+				if( !file_exists("../uploads/$customerAccountNumber") ) {
+
+					mkdir("../uploads/$customerAccountNumber", 0775);
+
+				}
+
+				// Moves the PDF from tmp to its final resting place
+				move_uploaded_file($_FILES[ 'inputGenModalFile' ][ 'tmp_name' ],
 					"../uploads/$customerAccountNumber/$policyPDFName");
+
+				// Sets the file uploaded to true
+				$ret["fileUploaded"] = true;
 
 			}
 

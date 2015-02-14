@@ -165,7 +165,8 @@
 			"				<div id=\"$currentModalAlert\" class=\"hidden\" " .
 								"role=\"alert\" />" .
 			"				<form class=\"form-left\" id=\"$currentModalNameForm\"" .
-								" onsubmit=\"modalGenSubmit()\">" .
+								" enctype=\"multipart/form-data\" " .
+								"onsubmit=\"modalGenSubmit()\">" .
 			"					<div class=\"form-group form-inline\">" .
 			"						<div class=\"input-group col-xs-4\">" .
 			"							<label for=\"inputGenModalFirstName\">" .

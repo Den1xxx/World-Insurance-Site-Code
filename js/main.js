@@ -19,14 +19,16 @@ function modalGenButton(modalFormName, modalOutputName) {
 // Allow auto generated modal forms to be submittable
 function modalGenSubmit(modalFormName, modalOutputName) {
 
-	var serializedData = $(modalFormName).serialize();
+	var formData = new FormData(modalFormName);
 
 	// Fire off the POST request to updateCustomer.php
 	var req = $.ajax({
 
 		url: "../includes/updateCustomer.php",
 		type: "POST",
-		data: serializedData
+		data : formData,
+		contentType : false,
+   	processData : false
 
 	});
 
