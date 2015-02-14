@@ -55,8 +55,8 @@
 		if(!$_FILES[ 'inputGenModalFile' ][ 'error' ]) {
 
 			// Generate a new file name for this policy PDF
-			// The name format is MMDDYYYY
-			// The name format is always the policy start date
+			// The name format is MMDDYYYY-MMDDYYYY
+			// The name format is always the policy start date "-" policy end date
 			$policyPDFName = "01012015" . ".pdf";
 
 			// Checks to make sure the PDF is larger than 20MBs

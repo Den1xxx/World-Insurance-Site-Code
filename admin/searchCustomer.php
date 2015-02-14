@@ -18,6 +18,9 @@
 		<!-- Bootstrap Theme CSS 3.3.2 -->
 		<link rel="stylesheet" href="../css/bootstrap-theme.min.css" />
 
+		<!-- Bootstrap Datepicker CSS -->
+		<link rel="stylesheet" href="../css/bootstrap-datepicker3.min.css" />
+
 		<!-- Sticky Footer CSS -->
 		<link rel="stylesheet" href="../css/sticky-footer.css" />
 
@@ -117,6 +120,9 @@
 
 		<!-- Bootstrap Switch JS 3.3.1 -->
 		<script src="../js/bootstrap-switch.min.js"></script>
+
+		<!-- Bootstrap Datepicker JS -->
+		<script src="../js/bootstrap-datepicker.min.js"></script>
 
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 		<script src="../js/ie10-viewport-bug-workaround.js"></script>
