@@ -8,23 +8,36 @@
  *
  */
 
-// Allow buttons on auto generated modal forms to be clickable, also passes the
-// form that the button belongs to as an argument
-function modalGenButton(modalFormName, modalOutputName) {
+// Allow the buttons on the auto-generated modal forms for the Update Customer
+// Info modals, and the Update Customer Policy PDFs modals
+function modalGenButton(modalFormName, modalOutputName, updateType) {
 
-	modalGenSubmit(modalFormName, modalOutputName);
+	switch(updateType) {
+		
+		case 0:
+			updateCustomerInfo(modalFormName, modalOutputName);
+			break;
+		
+		case 1:
+			updateCustomerPolicyPDF(modalFormName, modalOutputName);
+			break;
+			
+		default:
+			break;
+		
+	}
 
 }
 
-// Allow auto generated modal forms to be submittable
-function modalGenSubmit(modalFormName, modalOutputName) {
+// Update Customer Info for auto-generated modals
+function updateCustomerInfo(modalFormName, modalOutputName) {
 
 	var formData = new FormData(modalFormName);
 
 	// Fire off the POST request to updateCustomer.php
 	var req = $.ajax({
 
-		url: "../includes/updateCustomer.php",
+		url: "../includes/updateCustomerInfo.php",
 		type: "POST",
 		data : formData,
 		contentType : false,
@@ -73,6 +86,13 @@ function modalGenSubmit(modalFormName, modalOutputName) {
 
 	});
 
+}
+
+// Update Customer Policy PDFs for auto-generated modals
+function updateCustomerPolicyPDF(modalFormName, modalOutputName) {
+	
+	// Cool stuff
+	
 }
 
 // Allow auto generated search result rows to be deletable
