@@ -140,12 +140,17 @@
 		// Set up the current modals variables (pretty much their unique names)
 		$currentModalName                = "view" . $count . "CustomerModal";
 		$currentModalNameBtn             = "#" . $currentModalName;
+		$currentModalNamePDF             = $currentModalName . "PDF";
+		$currentModalNamePDFBtn          = "#" . $currentModalNamePDF;
 		$currentModalAlert               = $currentModalName . "Alert";
+		$currentModalPDFAlert            = $currentModalNamePDF . "Alert";
 		$currentModalNameForm            = $currentModalName . "Form";
+		$currentModalNamePDFForm         = $currentModalNamePDF . "Form";
 		$currentModalLabelName           = $currentModalName . "Label";
+		$currentModalPDFLabelName        = $currentModalNamePDF . "Label";
 		$curentModalNameBtnAccountNumber = $currentModalNameBtn . "AccountNumber";
 
-		// Save all auto-generated modals for each returned customer
+		// Save the View Customer Modal
 		$modal .=
 			"<!-- $currentModalName Modal -->" .
 			"<div class=\"modal fade\" id=\"$currentModalName\" tabindex=\"-1\" " .
@@ -213,6 +218,43 @@
 											"value=\"$zip\" autocomplete=\"off\" />" .
 			"						</div>" .
 			"					</div>" .
+			"				</form>" .
+			"			</div>" .
+			"			<div class=\"modal-footer\">" .
+			"				<button type=\"button\" class=\"btn btn-default\" " .
+								"data-dismiss=\"modal\" onclick=\"searchCustomer();\"" .
+								">Close</button>" .
+			"				<button type=\"button\" class=\"btn btn-primary\" " .
+								"onclick=\"modalGenButton($currentModalNameForm, " .
+								"$currentModalAlert)\">Update</button>" .
+			"			</div>" .
+			"		</div>" .
+			"	</div>" .
+			"</div>";
+			
+		$modal .=
+			"<!-- $currentModalNamePDF Modal -->" .
+			"<div class=\"modal fade\" id=\"$currentModalNamePDF\" " .
+				"tabindex=\"-1\" role=\"dialog\" " .
+				"aria-labelledby=\"$currentModalNamePDF\" aria-hidden=\"true\">" .
+			"	<div class=\"modal-dialog modal-lg\">" .
+			"		<div class=\"modal-content\">" .
+			"			<div class=\"modal-header\">" .
+			"				<button type=\"button\" class=\"close\" " .
+								"data-dismiss=\"modal\" aria-label=\"Close\">" .
+			"					<span aria-hidden=\"true\">&times;</span>" .
+			"				</button>" .
+			"				<h4 class=\"modal-title\" " .
+								"id=\"$currentModalPDFLabelName\">$firstName " .
+								"$lastName's Policy PDFs</h4>" .
+			"			</div>" .
+			"			<div class=\"modal-body\">" .
+			"				<div id=\"$currentModalPDFAlert\" class=\"hidden\" " .
+								"role=\"alert\" />" .
+			"				<form class=\"form-left\" " .
+								"id=\"$currentModalNamePDFForm\"" .
+								" enctype=\"multipart/form-data\" " .
+								"onsubmit=\"modalGenSubmit()\">" .
 			"					<div class=\"form-group form-inline\">" .
 			"						<label for=\"inputDatePickerStart\">Policy " .
 										"Start Date to Policy End Date</label>" .
@@ -252,8 +294,8 @@
 								"data-dismiss=\"modal\" onclick=\"searchCustomer();\"" .
 								">Close</button>" .
 			"				<button type=\"button\" class=\"btn btn-primary\" " .
-								"onclick=\"modalGenButton($currentModalNameForm, " .
-								"$currentModalAlert)\">Update</button>" .
+								"onclick=\"modalGenButton($currentModalNamePDFForm, " .
+								"$currentModalPDFAlert)\">Update</button>" .
 			"			</div>" .
 			"		</div>" .
 			"	</div>" .
@@ -268,10 +310,13 @@
 			"   <td>$zip</td>" .
 			"   <td><button type=\"button\" class=\"btn btn-xs btn-info\" " .
 					"data-toggle=\"modal\" data-target=\"$currentModalNameBtn\">" .
-					"View</button>&nbsp;&nbsp;<button type=\"button\" class=\"btn " .
-					"btn-xs btn-danger\" " .
-					"onclick=\"searchCustomerDelButton($accountNumber)\">Delete" .
-					"</button></td>" .
+					"Edit Customer</button>&nbsp;&nbsp;<button type=\"button\" " .
+					"class=\"btn btn-xs btn-info\" data-toggle=\"modal\" " .
+					"data-target=\"$currentModalNamePDFBtn\">Customer " .
+					"PDFs</button>&nbsp;&nbsp;<button type=\"button\" " .
+					"class=\"btn btn-xs btn-danger\" " .
+					"onclick=\"searchCustomerDelButton($accountNumber)\">Delete " .
+					"Customer</button></td>" .
 			"</tr>";
 
 	}
