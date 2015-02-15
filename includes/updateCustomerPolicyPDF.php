@@ -37,12 +37,17 @@
 
 	}
 	
+	// Gets the value that equals the chosen form
+	$formSelectValue = $_POST[ 'inputGenModalFormSelect' ];
+	
 	// Checks to see if the user uploaded a PDF
-	if($_FILES[ 'inputGenModalFile' ][ 'name' ]) {
+	if($_FILES[ 'inputGenModalFile' ][ 'name' ] && $formSelectValue == 2) {
 
 		if(!$_FILES[ 'inputGenModalFile' ][ 'error' ]) {
 			
 			// Save the date picker inputs to variables
+			$customerAccountNumber   = $_POST[ 'inputGenModalAccountNumber' ];
+			$customerPolicyNumber    = $_POST[ 'inputGenModalPolicyNumber' ];
 			$customerDatePickerStart = $_POST[ 'inputGenModalDatePickerStart' ];
 			$customerDatePickerEnd   = $_POST[ 'inputGenModalDatePickerEnd' ];
 			

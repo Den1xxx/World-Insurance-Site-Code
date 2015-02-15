@@ -36,8 +36,6 @@
 		`customerFirstName` varchar(100) CHARACTER SET utf8 NOT NULL,
 		`customerLastName` varchar(100) CHARACTER SET utf8 NOT NULL,
 		`customerZip` mediumint(5) unsigned NOT NULL,
-		`customerPolicyNumbers` mediumtext CHARACTER SET utf8 NOT NULL,
-		`customerPolicyPDFs` longtext CHARACTER SET utf8 NOT NULL,
 		PRIMARY KEY (`customerRecordID`),
 		UNIQUE KEY `accountNumber` (`accountNumber`)
 		) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
@@ -54,9 +52,28 @@
 		`isAdmin` BOOLEAN NOT NULL,
 		`userEmail` varchar(100) CHARACTER SET utf8 NOT NULL,
 		`userPassword` mediumtext CHARACTER SET utf8 NOT NULL,
-		`accountNumber` int(9) unsigned NOT NULL,
+		`customerRecordID` bigint(20) unsigned NOT NULL,
 		PRIMARY KEY (`userRecordID`),
+		FOREIGN KEY (`customerRecordID`) REFERENCES " . TBL_CUSTOMER . 
+			"(`customerRecordID`),
 		UNIQUE KEY `userEmail` (`userEmail`)
+		) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+
+	if ( $db->query($SQLQuery) === FALSE ) {
+
+		error_log( "Error creating table: " . $db->error );
+		return FALSE;
+
+	}
+	
+	$SQLQuery = "CREATE TABLE `" . TBL_POLICY . "` (
+		`policyRecordID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+		`policyNumber` int(9) unsigned NOT NULL,
+		`customerRecordID` bigint(20) unsigned NOT NULL,
+		PRIMARY KEY (`policyRecordID`),
+		FOREIGN KEY (`customerRecordID`) REFERENCES " . TBL_CUSTOMER . 
+			"(`customerRecordID`),
+		UNIQUE KEY `policyNumber` (`policyNumber`)
 		) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
 	if ( $db->query($SQLQuery) === FALSE ) {

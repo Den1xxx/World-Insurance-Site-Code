@@ -170,8 +170,7 @@
 			"				<div id=\"$currentModalAlert\" class=\"hidden\" " .
 								"role=\"alert\" />" .
 			"				<form class=\"form-left\" id=\"$currentModalNameForm\"" .
-								" enctype=\"multipart/form-data\" " .
-								"onsubmit=\"modalGenSubmit()\">" .
+								" enctype=\"multipart/form-data\">" .
 			"					<div class=\"form-group form-inline\">" .
 			"						<div class=\"input-group col-xs-4\">" .
 			"							<label for=\"inputGenModalFirstName\">" .
@@ -226,7 +225,7 @@
 								">Close</button>" .
 			"				<button type=\"button\" class=\"btn btn-primary\" " .
 								"onclick=\"modalGenButton($currentModalNameForm, " .
-								"$currentModalAlert)\">Update</button>" .
+								"$currentModalAlert, 0)\">Update</button>" .
 			"			</div>" .
 			"		</div>" .
 			"	</div>" .
@@ -253,9 +252,43 @@
 								"role=\"alert\" />" .
 			"				<form class=\"form-left\" " .
 								"id=\"$currentModalNamePDFForm\"" .
-								" enctype=\"multipart/form-data\" " .
-								"onsubmit=\"modalGenSubmit()\">" .
+								" enctype=\"multipart/form-data\">" .
 			"					<div class=\"form-group form-inline\">" .
+			"						<select id=\"inputGenModalFormSelect\" " .
+										"name=\"inputGenModalFormSelect\" " .
+										"class=\"form-control\">" .
+			"							<option value=\"0\">Add New Policy</option>" .
+			"							<option value=\"1\">Delete Policy</option>" .
+			"							<option value=\"2\">Add Policy Period to " .
+											"Existing Policy</option>" .
+			"						</select>" .
+			"					</div>" .
+			"					<div class=\"form-group form-inline\">" .
+			"						<div class=\"input-group col-xs-2\">" .
+			"							<label for=\"inputGenModalAccountNumber\">" .
+											"Account Number</label>" .
+			"							<input type=\"text\" " .
+											"id=\"inputGenModalAccountNumber\" " .
+											"name=\"inputGenModalAccountNumber\" " .
+											"class=\"form-control " .
+											"form-single-lg-margin\" " .
+											"value=\"$accountNumber\" " .
+											"autocomplete=\"off\" disabled/>" .
+			"						</div>" .
+			"					</div>" .
+			"					<div class=\"form-group form-inline\">" .
+			"						<div class=\"input-group col-xs-2\">" .
+			"							<label for=\"inputGenModalNewPolicyNumber\">" .
+											"New Policy Number</label>" .
+			"							<input type=\"text\" " .
+											"id=\"inputGenModalNewPolicyNumber\" " .
+											"name=\"inputGenModalNewPolicyNumber\" " .
+											"class=\"form-control " .
+											"form-single-lg-margin\" " .
+											"autocomplete=\"off\"/>" .
+			"						</div>" .
+			"					</div>" .
+			"					<div class=\"form-group form-inline hidden\">" .
 			"						<label for=\"inputDatePickerStart\">Policy " .
 										"Start Date to Policy End Date</label>" .
 			"						<div class=\"input-daterange input-group " .
@@ -277,7 +310,7 @@
    										"data-date-today-highlight=\"true\" />" .
 			"						</div>" .
 			"					</div>" .
-			"					<div class=\"form-group form-inline\">" .
+			"					<div class=\"form-group form-inline hidden\">" .
 			"						<div class=\"input-group col-xs-3\">" .
 			"							<label for=\"inputGenModalFile\">Upload Policy " .
 											"PDF</label>" .
@@ -295,7 +328,7 @@
 								">Close</button>" .
 			"				<button type=\"button\" class=\"btn btn-primary\" " .
 								"onclick=\"modalGenButton($currentModalNamePDFForm, " .
-								"$currentModalPDFAlert)\">Update</button>" .
+								"$currentModalPDFAlert, 1)\">Update</button>" .
 			"			</div>" .
 			"		</div>" .
 			"	</div>" .
