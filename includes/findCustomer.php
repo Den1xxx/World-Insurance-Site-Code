@@ -214,25 +214,22 @@
 			"						</div>" .
 			"					</div>" .
 			"					<div class=\"form-group form-inline\">" .
+			"						<label for=\"inputDatePickerStart\">Policy " .
+										"Start Date to Policy End Date</label>" .
 			"						<div class=\"input-daterange input-group " .
-										"col-xs-1\" id=\"datePicker\">" .
-			"							<label for=\"inputDatePickerStart\">Policy " .
-											"Start Date</label>" .
-   		"							<input type=\"text\" class=\"input-sm " .
-   										"form-control\" id=\"inputDatePickerStart\" " .
+										"col-xs-3\" id=\"datePicker\">" .
+   		"							<input type=\"text\" class=\"form-control\" " .
+   										"id=\"inputDatePickerStart\" " .
    										"name=\"inputDatePickerStart\" " .
    										"data-provide=\"datepicker\" " .
    										"data-date-today-btn=\"linked\" " .
    										"data-date-autoclose=\"true\" " .
    										"data-date-today-highlight=\"true\" />" .
-   		"							<label for=\"inputDatePickerSpan\"> </label>" .
    		"							<span class=\"input-group-addon\" " .
    										"id=\"inputDatePickerSpan\" " .
    										"name=\"inputDatePickerSpan\">to</span>" .
-   		"							<label for=\"inputDatePickerEnd\">Policy " .
-											"End Date</label>" .
-   		"							<input type=\"text\" class=\"input-sm " .
-   										"form-control\" id=\"inputDatePickerEnd\" " .
+   		"							<input type=\"text\" class=\"form-control\" " .
+   										"id=\"inputDatePickerEnd\" " .
    										"name=\"inputDatePickerEnd\" " .
    										"data-provide=\"datepicker\" " .
    										"data-date-today-btn=\"linked\" " .
