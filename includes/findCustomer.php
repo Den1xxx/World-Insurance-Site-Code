@@ -219,18 +219,16 @@
 			"						<div class=\"input-daterange input-group " .
 										"col-xs-3\" id=\"datePicker\">" .
    		"							<input type=\"text\" class=\"form-control\" " .
-   										"id=\"inputDatePickerStart\" " .
-   										"name=\"inputDatePickerStart\" " .
+   										"id=\"inputGenModalDatePickerStart\" " .
+   										"name=\"inputGenModalDatePickerStart\" " .
    										"data-provide=\"datepicker\" " .
    										"data-date-today-btn=\"linked\" " .
    										"data-date-autoclose=\"true\" " .
    										"data-date-today-highlight=\"true\" />" .
-   		"							<span class=\"input-group-addon\" " .
-   										"id=\"inputDatePickerSpan\" " .
-   										"name=\"inputDatePickerSpan\">to</span>" .
+   		"							<span class=\"input-group-addon\">to</span>" .
    		"							<input type=\"text\" class=\"form-control\" " .
-   										"id=\"inputDatePickerEnd\" " .
-   										"name=\"inputDatePickerEnd\" " .
+   										"id=\"inputGenModalDatePickerEnd\" " .
+   										"name=\"inputGenModalDatePickerEnd\" " .
    										"data-provide=\"datepicker\" " .
    										"data-date-today-btn=\"linked\" " .
    										"data-date-autoclose=\"true\" " .

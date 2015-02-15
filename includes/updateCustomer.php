@@ -53,11 +53,28 @@
 	if($_FILES[ 'inputGenModalFile' ][ 'name' ]) {
 
 		if(!$_FILES[ 'inputGenModalFile' ][ 'error' ]) {
+			
+			// Save the date picker inputs to variables
+			$customerDatePickerStart = $_POST[ 'inputGenModalDatePickerStart' ];
+			$customerDatePickerEnd   = $_POST[ 'inputGenModalDatePickerEnd' ];
+			
+			// Sanitize the date picker inputs
+			$customerDatePickerStart
+				= $db->real_escape_string($customerDatePickerStart);
+			$customerDatePickerEnd
+				= $db->real_escape_string($customerDatePickerEnd);
+				
+			// Remove any slashes that exist
+			$customerDatePickerStart = str_replace("/", "", 
+				$customerDatePickerStart);
+			$customerDatePickerEnd   = str_replace("/", "", 
+				$customerDatePickerEnd);
 
 			// Generate a new file name for this policy PDF
 			// The name format is MMDDYYYY-MMDDYYYY
 			// The name format is always the policy start date "-" policy end date
-			$policyPDFName = "01012015" . ".pdf";
+			$policyPDFName = $customerDatePickerStart . "-" . 
+				$customerDatePickerEnd . ".pdf";
 
 			// Checks to make sure the PDF is larger than 20MBs
 			if($_FILES[ 'inputGenModalFile' ][ 'size' ] > 20971520) {
