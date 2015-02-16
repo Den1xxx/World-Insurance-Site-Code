@@ -498,12 +498,6 @@ $(document).ready(function() {
 
 	});
 
-	$(document.body).on("click", "#addFileButton", function(event) {
-
-		// Some shiz here
-
-	});
-
 	// Bind to the submit event of the adminCreationForm form
 	$(document.body).on("submit", "#loginForm", function(event) {
 
