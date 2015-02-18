@@ -1,11 +1,11 @@
 <?php
 
 	// Determine site content root
-	define('__ADUSROOT__', dirname(dirname(__FILE__)));
+	$webroot = dirname(dirname(__FILE__));
 
-	require_once( __ADUSROOT__ . "/config.php" );
-	require_once( __ADUSROOT__ . "/includes/database.php" );
-	require_once( __ADUSROOT__ . "/includes/createHash.php" );
+	require_once( $webroot . "/config.php" );
+	require_once( $webroot . "/includes/database.php" );
+	require_once( $webroot . "/includes/createHash.php" );
 
 	// Setups up return array
 	$ret = array(
@@ -28,29 +28,29 @@
 
 	}
 
-	$newUserEmail         = $_POST[ 'inputUserEmail' ];
-	$newUserPass          = $_POST[ 'inputUserPass' ];
-	$newUserAccountNumber = $_POST[ 'inputUserAccountNumber' ];
-	$newIsAdmin           = $_POST[ 'inputIsAdmin' ];
-	$hashUserPass         = create_hash("$newUserPass");
+	$newUserEmail             = $_POST[ 'inputUserEmail' ];
+	$newUserPass              = $_POST[ 'inputUserPass' ];
+	$existingcustomerRecordID = $_POST[ 'inputCustomerRecordID' ];
+	$newIsAdmin               = $_POST[ 'inputIsAdmin' ];
+	$hashUserPass             = create_hash("$newUserPass");
 
-	$preppedNewUserEmail         = $db->real_escape_string($newUserEmail);
-	$preppedNewUserPass          = $db->real_escape_string($hashUserPass);
-	$preppedNewUserAccountNumber = $db->real_escape_string($newUserAccountNumber);
-	$preppedNewIsAdmin           = $db->real_escape_string($newIsAdmin);
+	$newUserEmail             = $db->real_escape_string($newUserEmail);
+	$hashUserPass             = $db->real_escape_string($hashUserPass);
+	$existingcustomerRecordID = $db->real_escape_string($existingcustomerRecordID);
+	$newIsAdmin               = $db->real_escape_string($newIsAdmin);
 
 	$SQLQuery = "INSERT INTO `" . DB_NAME . "`.`" . TBL_USER . "` (" .
 		"`userRecordID`," .
 		"`isAdmin`," .
 		"`userEmail`," .
 		"`userPassword`," .
-		"`accountNumber`" .
+		"`customerRecordID`" .
 		") VALUES (" .
 			"NULL," .
-			"'$preppedNewIsAdmin'," .
-			"'$preppedNewUserEmail'," .
-			"'$preppedNewUserPass'," .
-			"'$preppedNewUserAccountNumber');";
+			"'$newIsAdmin'," .
+			"'$newUserEmail'," .
+			"'$hashUserPass'," .
+			"'$existingcustomerRecordID');";
 
 	if ( $db->query($SQLQuery) === FALSE ) {
 

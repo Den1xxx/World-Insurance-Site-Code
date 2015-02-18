@@ -55,7 +55,7 @@
 		`customerRecordID` bigint(20) unsigned NOT NULL,
 		PRIMARY KEY (`userRecordID`),
 		FOREIGN KEY (`customerRecordID`) REFERENCES " . TBL_CUSTOMER . 
-			"(`customerRecordID`),
+			"(`customerRecordID`) ON DELETE CASCADE,
 		UNIQUE KEY `userEmail` (`userEmail`)
 		) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
