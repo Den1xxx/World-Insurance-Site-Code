@@ -30,8 +30,6 @@
 		$newCustomerFirstName     = $_POST[ 'inputNewFirstName' ];
 		$newCustomerLastName      = $_POST[ 'inputNewLastName' ];
 		$newCustomerZip           = $_POST[ 'inputNewZip' ];
-		$newCustomerPolicyNumbers = "";
-		$newCustomerPolicyPDFs    = "";
 
 		$preppedNewCustomerAccountNumber
 			= $db->real_escape_string($newCustomerAccountNumber);
@@ -41,10 +39,6 @@
 			= $db->real_escape_string($newCustomerLastName);
 		$preppedNewCustomerZip
 			= $db->real_escape_string($newCustomerZip);
-		$preppedNewCustomerPolicyNumbers
-			= $db->real_escape_string($newCustomerPolicyNumbers);
-		$preppedNewCustomerPolicyPDFs
-			= $db->real_escape_string($newCustomerPolicyPDFs);
 
 		$SQLQuery = "SELECT * FROM `" . DB_NAME . "`.`" . TBL_CUSTOMER . "` " .
 			"WHERE accountNumber = '$preppedNewCustomerAccountNumber';";
@@ -70,17 +64,13 @@
 				"`accountNumber`, " .
 				"`customerFirstName`, " .
 				"`customerLastName`, " .
-				"`customerZip`, " .
-				"`customerPolicyNumbers`, " .
-				"`customerPolicyPDFs`) " .
+				"`customerZip`) " .
 				"VALUES ( " .
 					"NULL, " .
 					"'$preppedNewCustomerAccountNumber', " .
 					"'$preppedNewCustomerFirstName', " .
 					"'$preppedNewCustomerLastName', " .
-					"'$preppedNewCustomerZip', " .
-					"'$preppedNewCustomerPolicyNumbers', " .
-					"'$preppedNewCustomerPolicyPDFs');";
+					"'$preppedNewCustomerZip');";
 
 			if ( $db->query($SQLQuery) === FALSE ) {
 
