@@ -359,6 +359,13 @@ $(document).ready(function() {
 
 		// Serialize the data in the form
 		var serializedData = $form.serialize();
+		
+		// Create admin formData for the customer side of the admin user
+		var formData = new FormData();
+		formData.append("inputNewAccountNumber", 000000000);
+		formData.append("inputNewFirstName", "First");
+		formData.append("inputNewLastName", "Last");
+		formData.append("inputNewZip", 00000);
 
 		serializedData += "&inputUserAccountNumber=000000000&inputIsAdmin=1";
 
@@ -370,14 +377,49 @@ $(document).ready(function() {
 		// Fire off the POST request to writeConfig.php
 		request = $.ajax({
 
-			url: "includes/addUserToDB.php",
+			url: "includes/addCustomerToDB.php",
 			type: "POST",
-			data: serializedData
+			data: formData
 
 		});
 
 		// Callback handler that will be called on success
 		request.done(function (response, textStatus, jqXhr) {
+			
+			var secondRequest = $.ajax({
+	
+				url: "includes/addUserToDB.php",
+				type: "POST",
+				data: serializedData
+	
+			});
+			
+			// Callback handler that will be called on success
+			secondRequest.done(function (response, textStatus, jqXhr) {
+	
+				// Do something?
+
+			});
+	
+			// Callback handler that will be called on failure
+			secondRequest.fail(function (jqXhr, textStatus, errorThrown) {
+	
+				// Log the error to the console
+				console.error(
+				   "The following error occurred: " +
+					  textStatus, errorThrown
+				);
+	
+			});
+	
+			// Callback handler that will be called regardless
+			// if the request failed or succeeded
+			secondRequest.always(function () {
+	
+				// Reenable the inputs
+				$inputs.prop("disabled", false);
+	
+			});
 
 			// Refresh the page
 			setTimeout(function () { window.location.reload(true); }, 5000);
@@ -622,7 +664,7 @@ $(document).ready(function() {
 		// Fire off the POST request to writeConfig.php
 		request = $.ajax({
 
-			url: "includes/addUser.php",
+			url: "includes/addUserToDB.php",
 			type: "POST",
 			data: serializedData
 
