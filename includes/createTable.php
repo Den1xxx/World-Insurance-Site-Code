@@ -72,7 +72,7 @@
 		`customerRecordID` bigint(20) unsigned NOT NULL,
 		PRIMARY KEY (`policyRecordID`),
 		FOREIGN KEY (`customerRecordID`) REFERENCES " . TBL_CUSTOMER . 
-			"(`customerRecordID`),
+			"(`customerRecordID`) ON DELETE CASCADE,
 		UNIQUE KEY `policyNumber` (`policyNumber`)
 		) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 

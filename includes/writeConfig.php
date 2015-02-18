@@ -69,7 +69,7 @@
 	fwrite($ifp, $txt);
 	fclose($ifp);
 
-	$configExists = file_exists( __ROOT__ . "/config.php" );
+	$configExists = file_exists( $webroot . "/config.php" );
 
 	return $configExists;
 
