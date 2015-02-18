@@ -370,7 +370,7 @@ $(document).ready(function() {
 		// Fire off the POST request to writeConfig.php
 		request = $.ajax({
 
-			url: "includes/addUser.php",
+			url: "includes/addUserToDB.php",
 			type: "POST",
 			data: serializedData
 
