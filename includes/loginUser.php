@@ -5,11 +5,11 @@
 	session_start();
 
 	// Determine site content root
-	define('__LOUSROOT__', dirname(dirname(__FILE__)));
+	$webroot = dirname(dirname(__FILE__));
 
-	require_once( __LOUSROOT__ . "/config.php" );
-	require_once( __LOUSROOT__ . "/includes/database.php" );
-	require_once( __LOUSROOT__ . "/includes/createHash.php" );
+	require_once( $webroot . "/config.php" );
+	require_once( $webroot . "/includes/database.php" );
+	require_once( $webroot . "/includes/createHash.php" );
 
 	// Setups up return array
 	$ret = array(
@@ -32,8 +32,8 @@
 
 	}
 
-	$loginUserEmail = $_GET[ 'inputLoginEmail' ];
-	$loginUserPass  = $_GET[ 'inputLoginUserPass' ];
+	$loginUserEmail = $_POST[ 'inputLoginEmail' ];
+	$loginUserPass  = $_POST[ 'inputLoginUserPass' ];
 
 	$preppedLoginUserEmail = $db->real_escape_string($loginUserEmail);
 	$preppedLoginUserPass  = $db->real_escape_string($loginUserPass);

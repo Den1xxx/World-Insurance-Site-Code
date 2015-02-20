@@ -569,7 +569,7 @@ $(document).ready(function() {
 		request = $.ajax({
 
 			url: "includes/loginUser.php",
-			type: "GET",
+			type: "POST",
 			data: serializedData
 
 		});
