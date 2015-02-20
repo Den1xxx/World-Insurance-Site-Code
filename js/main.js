@@ -362,12 +362,13 @@ $(document).ready(function() {
 		
 		// Create admin formData for the customer side of the admin user
 		var formData = new FormData();
-		formData.append("inputNewAccountNumber", 000000000);
+		formData.append("inputNewAccountNumber", "000000000");
 		formData.append("inputNewFirstName", "First");
 		formData.append("inputNewLastName", "Last");
-		formData.append("inputNewZip", 00000);
+		formData.append("inputNewZip", "00000");
 
-		serializedData += "&inputUserAccountNumber=000000000&inputIsAdmin=1";
+		serializedData += "&inputUserAccountNumber=000000000&inputIsAdmin=1" +
+			"&inputCustomerRecordID=1";
 
 		// Let's disable the inputs for the duration of the Ajax request.
 		// Note: we disable elements AFTER the form data has been serialized.
@@ -379,7 +380,9 @@ $(document).ready(function() {
 
 			url: "includes/addCustomerToDB.php",
 			type: "POST",
-			data: formData
+			data: formData,
+			contentType : false,
+   		processData : false
 
 		});
 
@@ -397,7 +400,8 @@ $(document).ready(function() {
 			// Callback handler that will be called on success
 			secondRequest.done(function (response, textStatus, jqXhr) {
 	
-				// Do something?
+				// Refresh the page
+				setTimeout(function () { window.location.reload(true); }, 5000);
 
 			});
 	
@@ -420,9 +424,6 @@ $(document).ready(function() {
 				$inputs.prop("disabled", false);
 	
 			});
-
-			// Refresh the page
-			setTimeout(function () { window.location.reload(true); }, 5000);
 
 		});
 
