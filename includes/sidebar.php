@@ -50,6 +50,25 @@
    }
 
    $out .=
+	   "    </ul>";
+	   
+	$out .=
+		"   <ul class=\"nav nav-sidebar\">";
+
+   if( $currentPage == "/admin/frontPage.php" ) {
+
+		$out .=
+			"       <li class=\"active\"><a href=\"../admin/frontPage.php\">Edit Front Page <span class=\"sr-only\">(current)</span></a></li>";
+
+   }
+   else {
+
+		$out .=
+			"       <li><a href=\"../admin/frontPage.php\">Edit Front Page <span class=\"sr-only\">(current)</span></a></li>";
+
+   }
+
+   $out .=
 	   "    </ul>" .
 	   "</div>";
 
