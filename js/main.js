@@ -454,8 +454,11 @@ $(document).ready(function() {
 	
 	$("#editSloganModal").on("shown.bs.modal", function (event) {
 		
+		// Gets the value of the input text box
+		var slogan = $( "#inputFrontPageSlogan" ).val();
+		
 		// Sets the contents from DB of the slogan editor
-		tinyMCE.activeEditor.setContent("<span>some</span> html", {format : "raw"});
+		tinyMCE.activeEditor.setContent(slogan, {format : "raw"});
 		
 	});
 

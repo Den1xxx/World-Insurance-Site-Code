@@ -2,6 +2,44 @@
 	// Starts a new session
 	ob_start();
 	session_start();
+	
+	// Determine site content root
+	$webroot = dirname(__FILE__);
+	
+	require_once( $webroot . "/config.php");
+	require_once( $webroot . "/includes/database.php");
+
+	$dbObject = new Database;
+	$db = $dbObject->createDatabaseConnection();
+	
+	// Fetch the Site Name from the database
+	$SQLQuery = "SELECT * FROM `" . DB_NAME . "`.`" . TBL_CONFIG . 
+						"` WHERE `configName` = 'siteName';";
+
+	$result = $db->query($SQLQuery);
+	
+	// Fetch returned row
+	$row = $result->fetch_row();
+
+	// Close the returned result
+	$result->close();
+	
+	$siteName = "$row[2]";
+	
+	// Fetch the slogan from the database
+	$SQLQuery = "SELECT * FROM `" . DB_NAME . "`.`" . TBL_CONFIG . 
+						"` WHERE `configName` = 'sloganHTML';";
+
+	$result = $db->query($SQLQuery);
+	
+	// Fetch returned row
+	$row = $result->fetch_row();
+
+	// Close the returned result
+	$result->close();
+	
+	$slogan = "$row[2]";
+	
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +48,7 @@
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>World Insurance Home Page</title>
+		<title><?php echo $siteName ?></title>
 
 		<!-- Bootstrap CSS 3.3.2 -->
 		<link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -35,13 +73,6 @@
 			<script src="js/html5shiv.min.js"></script>
 			<script src="js/respond.min.js"></script>
 		<![endif]-->
-
-		<?php
-	  
-			// Determine site content root
-			$webroot = dirname(__FILE__);
-	  
-		?>
 	</head>
 	<body>
 		<?php
@@ -51,14 +82,16 @@
 		<!-- Main jumbotron for a primary marketing message or call to action -->
 		<div class="jumbotron">
 			<div class="container">
-				<h1>World Insurance</h1>
-				<p>Having your best interests in heart, we strive to make sure you are getting the best possible policy!
+				<h1><?php echo $siteName ?></h1>
+				<p>
 					<?php
+					
+						echo $slogan;
 					
 						if( $_SESSION['isAdmin'] == TRUE ) {
 							
 							echo 
-								"<button type=\"button\" class=\"btn btn-xs " .
+								" <button type=\"button\" class=\"btn btn-xs " .
 								"btn-info\" data-toggle=\"modal\" " .
 								"data-target=\"#editSloganModal\">" .
 								"	<span class=\"glyphicon glyphicon-pencil\" " .
@@ -117,7 +150,7 @@
 			                        </div>
 			                        <div class=\"modal-body\">
 			                            <form class=\"form-signin\" id=\"editFrontPageForm\" onsubmit=\"return false;\">
-													<input type=\"text\" id=\"inputFrontPageSlogan\" name=\"inputFrontPageSlogan\" autocomplete=\"off\" />
+													<input type=\"text\" id=\"inputFrontPageSlogan\" name=\"inputFrontPageSlogan\" value=\"$slogan\" autocomplete=\"off\" />
 												</form>
 			                        </div>
 			                        <div class=\"modal-footer\">
@@ -167,6 +200,8 @@
 				}
 			});
 		</script>
+		
+		<?php $db->close(); ?>
 		
 	</body>
 </html>

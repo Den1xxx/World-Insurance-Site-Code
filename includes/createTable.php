@@ -90,6 +90,47 @@
 		PRIMARY KEY (`configRecordID`),
 		UNIQUE KEY `configName` (`configName`)
 		) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+		
+	if ( $db->query($SQLQuery) === FALSE ) {
+
+		error_log( "Error creating table: " . $db->error );
+		return FALSE;
+
+	}
+	
+	$SQLQuery = "INSERT INTO `" . DB_NAME . "`.`" . TBL_CONFIG . "` (" .
+		"`configRecordID`," .
+		"`configName`," .
+		"`configValue`" .
+		") VALUES (" .
+			"NULL," .
+			"'siteName'," .
+			"'Site Name');";
+			
+	if ( $db->query($SQLQuery) === FALSE ) {
+
+		error_log( "Error adding site name to db: " . $db->error );
+		return FALSE;
+
+	}
+	
+	$SQLQuery = "INSERT INTO `" . DB_NAME . "`.`" . TBL_CONFIG . "` (" .
+		"`configRecordID`," .
+		"`configName`," .
+		"`configValue`" .
+		") VALUES (" .
+			"NULL," .
+			"'sloganHTML'," .
+			"'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce " .
+				"dapibus, tellus ac cursus commodo, tortor mauris condimentum " .
+				"nibh, ut fermentum massa justo sit amet risus.');";
+			
+	if ( $db->query($SQLQuery) === FALSE ) {
+
+		error_log( "Error adding site slogan to db: " . $db->error );
+		return FALSE;
+
+	}
 
 	$db->close();
 
