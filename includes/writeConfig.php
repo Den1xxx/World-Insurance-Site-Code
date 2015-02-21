@@ -13,6 +13,7 @@
 	$configTblCustomer = "tblCustomer";
 	$configTblUser = "tblUser";
 	$configTblPolicy = "tblPolicy";
+	$configTblConfig = "tblConfig";
 
 	$ifp = fopen( $webroot . "/config.php", "w" ) or die( "Unable to open file!" );
 
