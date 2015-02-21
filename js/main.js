@@ -451,6 +451,13 @@ $(document).ready(function() {
 		event.preventDefault();
 
 	});
+	
+	$("#editSloganModal").on("shown.bs.modal", function (event) {
+		
+		// Sets the contents from DB of the slogan editor
+		tinyMCE.activeEditor.setContent("<span>some</span> html", {format : "raw"});
+		
+	});
 
 	// Bind to the submit event of the writeDatabaseConfigurationForm form
 	$("#writeDatabaseConfigurationForm").submit(function (event) {

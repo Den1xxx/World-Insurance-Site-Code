@@ -82,6 +82,14 @@
 		return FALSE;
 
 	}
+	
+	$SQLQuery = "CREATE TABLE `" . TBL_CONFIG . "` (
+		`configRecordID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+		`configName` varchar(100) CHARACTER SET utf8 NOT NULL,
+		`configValue` varchar(100) CHARACTER SET utf8 NOT NULL,
+		PRIMARY KEY (`configRecordID`),
+		UNIQUE KEY `configName` (`configName`)
+		) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
 	$db->close();
 

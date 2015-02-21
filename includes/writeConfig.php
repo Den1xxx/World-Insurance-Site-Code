@@ -62,6 +62,9 @@
 
 	// Policies table name
 	define('TBL_POLICY', '$configTblPolicy');
+	
+	// Config table name
+	define('TBL_CONFIG', '$configTblConfig');
 
 ?>
 ";
