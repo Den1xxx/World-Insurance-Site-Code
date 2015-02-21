@@ -60,21 +60,15 @@
 					require_once($webroot . "/includes/sidebar.php");
 				?>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h1 class="page-header">Add Customers</h1>
+				<h1 class="page-header">Edit Front Page</h1>
 
-				<form class="form-signin" id="addCustomerForm" onsubmit="return false;">
-					<h2 class="form-signin-heading" id="addCustomerFormTitle">New Customer Info</h2>
-					<label for="inputNewAccountNumber" class="sr-only">Account Number</label>
-					<input type="text" id="inputNewAccountNumber" name="inputNewAccountNumber" class="form-control form-first" placeholder="Account Number" autocomplete="off" autofocus />
-					<label for="inputNewFirstName" class="sr-only">First Name</label>
-					<input type="text" id="inputNewFirstName" name="inputNewFirstName" class="form-control form-middle" placeholder="First Name" autocomplete="off" />
-					<label for="inputNewLastName" class="sr-only">Last Name</label>
-					<input type="text" id="inputNewLastName" name="inputNewLastName" class="form-control form-middle" placeholder="Last Name" autocomplete="off" />
-					<label for="inputNewZip" class="sr-only">Zip Code</label>
-					<input type="text" id="inputNewZip" name="inputNewZip" class="form-control form-last" placeholder="Zip Code" autocomplete="off" />
+				<form class="form-signin" id="editFrontPageForm" onsubmit="return false;">
+					<h2 class="form-signin-heading" id="editFrontPageFormTitle">Edit Front Page</h2>
+					<label for="inputFrontPageSlogan">Slogan</label>
+					<input type="text" id="inputFrontPageSlogan" name="inputFrontPageSlogan" autocomplete="off" />
 					<div style="text-align: right;">
-						<button id="addCustomerCancelButton" type="submit" class="btn btn-default">Cancel</button>
-						<button id="addCustomerAddButton" type="submit" class="btn btn-primary">Add</button>
+						<button id="editFrontPageCancelButton" type="submit" class="btn btn-default">Cancel</button>
+						<button id="editFrontPageAddButton" type="submit" class="btn btn-primary">Add</button>
 					</div>
 				</form>
 			</div>
@@ -110,9 +104,14 @@
 		<script type="text/javascript" src="../js/tinymce/jquery.tinymce.min.js"></script>
 		<script type="text/javascript">
 			tinymce.init({
-   			selector: "input"
+				selector: "input",
+				setup: function (editor) {
+					editor.on("change", function () {
+						tinymce.triggerSave();
+					});
+				}
 			});
-</script>
+		</script>
 		
 	</body>
 </html>
